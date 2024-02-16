@@ -1,0 +1,26 @@
+Getting jams for dcase 2020
+Done
+Generating wav from jams ...
+INFO - DESED - /home/user/dcase20_task4/scripts/../data_generation/generate_wav_from_jams.py
+INFO - desed.generate_synthetic/generate_files_from_jams - generating audio files to ../dataset/audio/train/synthetic20/soundscapes
+INFO - desed.generate_synthetic/generate_files_from_jams - generating 0 / 3826 files (updated every 200)
+INFO - desed.generate_synthetic/generate_files_from_jams - generating 200 / 3826 files (updated every 200)
+INFO - desed.generate_synthetic/generate_files_from_jams - generating 400 / 3826 files (updated every 200)
+INFO - desed.generate_synthetic/generate_files_from_jams - generating 600 / 3826 files (updated every 200)
+INFO - desed.generate_synthetic/generate_files_from_jams - generating 800 / 3826 files (updated every 200)
+INFO - desed.generate_synthetic/generate_files_from_jams - generating 1000 / 3826 files (updated every 200)
+INFO - desed.generate_synthetic/generate_files_from_jams - generating 1200 / 3826 files (updated every 200)
+INFO - desed.generate_synthetic/generate_files_from_jams - generating 1400 / 3826 files (updated every 200)
+INFO - desed.generate_synthetic/generate_files_from_jams - generating 1600 / 3826 files (updated every 200)
+INFO - desed.generate_synthetic/generate_files_from_jams - generating 1800 / 3826 files (updated every 200)
+INFO - desed.generate_synthetic/generate_files_from_jams - generating 2000 / 3826 files (updated every 200)
+INFO - desed.generate_synthetic/generate_files_from_jams - generating 2200 / 3826 files (updated every 200)
+INFO - desed.generate_synthetic/generate_files_from_jams - generating 2400 / 3826 files (updated every 200)
+INFO - desed.generate_synthetic/generate_files_from_jams - generating 2600 / 3826 files (updated every 200)
+INFO - desed.generate_synthetic/generate_files_from_jams - generating 2800 / 3826 files (updated every 200)
+INFO - desed.generate_synthetic/generate_files_from_jams - generating 3000 / 3826 files (updated every 200)
+INFO - desed.generate_synthetic/generate_files_from_jams - generating 3200 / 3826 files (updated every 200)
+INFO - desed.generate_synthetic/generate_files_from_jams - generating 3400 / 3826 files (updated every 200)
+INFO - desed.generate_synthetic/generate_files_from_jams - generating 3600 / 3826 files (updated every 200)
+INFO - desed.generate_synthetic/generate_files_from_jams - generating 3800 / 3826 files (updated every 200)
+INFO - desed.generate_synthetic/generate_files_from_jams - Done

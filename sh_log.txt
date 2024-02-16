@@ -1,0 +1,469 @@
+Collecting package metadata (current_repodata.json): ...working... done
+Solving environment: ...working... failed with repodata from current_repodata.json, will retry with next repodata source.
+Collecting package metadata (repodata.json): ...working... done
+Solving environment: ...working... done
+
+## Package Plan ##
+
+  environment location: /home/user/anaconda3/envs/dcase2020
+
+  added / updated specs:
+    - python=3.6
+
+
+The following NEW packages will be INSTALLED:
+
+  _libgcc_mutex      pkgs/main/linux-64::_libgcc_mutex-0.1-main None
+  _openmp_mutex      pkgs/main/linux-64::_openmp_mutex-5.1-1_gnu None
+  ca-certificates    pkgs/main/linux-64::ca-certificates-2023.12.12-h06a4308_0 None
+  certifi            pkgs/main/linux-64::certifi-2021.5.30-py36h06a4308_0 None
+  ld_impl_linux-64   pkgs/main/linux-64::ld_impl_linux-64-2.38-h1181459_1 None
+  libffi             pkgs/main/linux-64::libffi-3.3-he6710b0_2 None
+  libgcc-ng          pkgs/main/linux-64::libgcc-ng-11.2.0-h1234567_1 None
+  libgomp            pkgs/main/linux-64::libgomp-11.2.0-h1234567_1 None
+  libstdcxx-ng       pkgs/main/linux-64::libstdcxx-ng-11.2.0-h1234567_1 None
+  ncurses            pkgs/main/linux-64::ncurses-6.4-h6a678d5_0 None
+  openssl            pkgs/main/linux-64::openssl-1.1.1w-h7f8727e_0 None
+  pip                pkgs/main/linux-64::pip-21.2.2-py36h06a4308_0 None
+  python             pkgs/main/linux-64::python-3.6.13-h12debd9_1 None
+  readline           pkgs/main/linux-64::readline-8.2-h5eee18b_0 None
+  setuptools         pkgs/main/linux-64::setuptools-58.0.4-py36h06a4308_0 None
+  sqlite             pkgs/main/linux-64::sqlite-3.41.2-h5eee18b_0 None
+  tk                 pkgs/main/linux-64::tk-8.6.12-h1ccaba5_0 None
+  wheel              pkgs/main/noarch::wheel-0.37.1-pyhd3eb1b0_0 None
+  xz                 pkgs/main/linux-64::xz-5.4.5-h5eee18b_0 None
+  zlib               pkgs/main/linux-64::zlib-1.2.13-h5eee18b_0 None
+
+
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+#
+# To activate this environment, use
+#
+#     $ conda activate dcase2020
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+Retrieving notices: ...working... done
+Collecting package metadata (current_repodata.json): ...working... done
+Solving environment: ...working... done
+
+# All requested packages already installed.
+
+Retrieving notices: ...working... done
+Collecting package metadata (current_repodata.json): ...working... done
+Solving environment: ...working... failed with initial frozen solve. Retrying with flexible solve.
+Collecting package metadata (repodata.json): ...working... done
+Solving environment: ...working... failed with initial frozen solve. Retrying with flexible solve.
+Collecting package metadata (current_repodata.json): ...working... done
+Solving environment: ...working... done
+
+## Package Plan ##
+
+  environment location: /home/user/anaconda3
+
+  added / updated specs:
+    - librosa
+    - pysoundfile
+    - tqdm
+    - youtube-dl
+
+
+The following packages will be downloaded:
+
+    package                    |            build
+    ---------------------------|-----------------
+    _libgcc_mutex-0.1          |      conda_forge           3 KB  conda-forge
+    _openmp_mutex-4.5          |       2_kmp_llvm           6 KB  conda-forge
+    audioread-3.0.1            |   py39hf3d152e_1          36 KB  conda-forge
+    ca-certificates-2024.2.2   |       hbcca054_0         152 KB  conda-forge
+    certifi-2024.2.2           |     pyhd8ed1ab_0         157 KB  conda-forge
+    conda-22.11.1              |   py39hf3d152e_1         904 KB  conda-forge
+    gettext-0.21.1             |       h27087fc_0         4.1 MB  conda-forge
+    libflac-1.4.3              |       h59595ed_0         385 KB  conda-forge
+    libgcc-ng-13.2.0           |       h807b86a_5         752 KB  conda-forge
+    librosa-0.10.1             |     pyhd8ed1ab_0         189 KB  conda-forge
+    libsndfile-1.2.2           |       hc60ed4a_1         346 KB  conda-forge
+    libstdcxx-ng-13.2.0        |       h7e041cc_5         3.7 MB  conda-forge
+    llvm-openmp-14.0.6         |       h9e868ea_0         4.4 MB
+    mpg123-1.32.4              |       h59595ed_0         480 KB  conda-forge
+    numba-0.59.0               |   py39h615d6bd_1         4.0 MB  conda-forge
+    openssl-3.2.1              |       hd590300_0         2.7 MB  conda-forge
+    pooch-1.8.0                |     pyhd8ed1ab_0          51 KB  conda-forge
+    pysoundfile-0.12.1         |   pypyhd8ed1ab_1          28 KB  conda-forge
+    ruamel.yaml-0.17.40        |   py39hd1e30aa_0         192 KB  conda-forge
+    ruamel.yaml.clib-0.2.8     |   py39hd1e30aa_0         142 KB  conda-forge
+    soxr-0.1.3                 |       h0b41bf4_3         128 KB  conda-forge
+    soxr-python-0.3.7          |   py39h44dd56e_0         266 KB  conda-forge
+    tqdm-4.66.2                |     pyhd8ed1ab_0          87 KB  conda-forge
+    ------------------------------------------------------------
+                                           Total:        23.1 MB
+
+The following NEW packages will be INSTALLED:
+
+  audioread          conda-forge/linux-64::audioread-3.0.1-py39hf3d152e_1 None
+  gettext            conda-forge/linux-64::gettext-0.21.1-h27087fc_0 None
+  libflac            conda-forge/linux-64::libflac-1.4.3-h59595ed_0 None
+  libogg             conda-forge/linux-64::libogg-1.3.4-h7f98852_1 None
+  librosa            conda-forge/noarch::librosa-0.10.1-pyhd8ed1ab_0 None
+  libsndfile         conda-forge/linux-64::libsndfile-1.2.2-hc60ed4a_1 None
+  libvorbis          conda-forge/linux-64::libvorbis-1.3.7-h9c3ff4c_0 None
+  llvm-openmp        pkgs/main/linux-64::llvm-openmp-14.0.6-h9e868ea_0 None
+  mpg123             conda-forge/linux-64::mpg123-1.32.4-h59595ed_0 None
+  pooch              conda-forge/noarch::pooch-1.8.0-pyhd8ed1ab_0 None
+  pysoundfile        conda-forge/noarch::pysoundfile-0.12.1-pypyhd8ed1ab_1 None
+  ruamel.yaml        conda-forge/linux-64::ruamel.yaml-0.17.40-py39hd1e30aa_0 None
+  ruamel.yaml.clib   conda-forge/linux-64::ruamel.yaml.clib-0.2.8-py39hd1e30aa_0 None
+  soxr               conda-forge/linux-64::soxr-0.1.3-h0b41bf4_3 None
+  soxr-python        conda-forge/linux-64::soxr-python-0.3.7-py39h44dd56e_0 None
+  youtube-dl         conda-forge/noarch::youtube-dl-2021.12.17-pyhd8ed1ab_0 None
+
+The following packages will be REMOVED:
+
+  libgomp-11.2.0-h1234567_1
+
+The following packages will be UPDATED:
+
+  ca-certificates    pkgs/main::ca-certificates-2023.12.12~ --> conda-forge::ca-certificates-2024.2.2-hbcca054_0 None
+  conda                               22.9.0-py39hf3d152e_1 --> 22.11.1-py39hf3d152e_1 None
+  libgcc-ng          pkgs/main::libgcc-ng-11.2.0-h1234567_1 --> conda-forge::libgcc-ng-13.2.0-h807b86a_5 None
+  libstdcxx-ng       pkgs/main::libstdcxx-ng-11.2.0-h12345~ --> conda-forge::libstdcxx-ng-13.2.0-h7e041cc_5 None
+  numba              pkgs/main::numba-0.59.0-py39h6a678d5_0 --> conda-forge::numba-0.59.0-py39h615d6bd_1 None
+  openssl              pkgs/main::openssl-3.0.13-h7f8727e_0 --> conda-forge::openssl-3.2.1-hd590300_0 None
+  tqdm               pkgs/main/linux-64::tqdm-4.65.0-py39h~ --> conda-forge/noarch::tqdm-4.66.2-pyhd8ed1ab_0 None
+
+The following packages will be SUPERSEDED by a higher-priority channel:
+
+  _libgcc_mutex           pkgs/main::_libgcc_mutex-0.1-main --> conda-forge::_libgcc_mutex-0.1-conda_forge None
+  _openmp_mutex          pkgs/main::_openmp_mutex-5.1-1_gnu --> conda-forge::_openmp_mutex-4.5-2_kmp_llvm None
+  certifi            pkgs/main/linux-64::certifi-2024.2.2-~ --> conda-forge/noarch::certifi-2024.2.2-pyhd8ed1ab_0 None
+
+
+
+Downloading and Extracting Packages
+libflac-1.4.3        | 385 KB    |            |   0% libflac-1.4.3        | 385 KB    | 4          |   4% libflac-1.4.3        | 385 KB    | ########## | 100% 
+_openmp_mutex-4.5    | 6 KB      |            |   0% _openmp_mutex-4.5    | 6 KB      | ########## | 100% 
+ca-certificates-2024 | 152 KB    |            |   0% ca-certificates-2024 | 152 KB    | ########## | 100% 
+audioread-3.0.1      | 36 KB     |            |   0% audioread-3.0.1      | 36 KB     | ########## | 100% 
+tqdm-4.66.2          | 87 KB     |            |   0% tqdm-4.66.2          | 87 KB     | ########## | 100% 
+llvm-openmp-14.0.6   | 4.4 MB    |            |   0% llvm-openmp-14.0.6   | 4.4 MB    |            |   0% llvm-openmp-14.0.6   | 4.4 MB    | 3          |   3% llvm-openmp-14.0.6   | 4.4 MB    | #3         |  14% llvm-openmp-14.0.6   | 4.4 MB    | #####6     |  56% llvm-openmp-14.0.6   | 4.4 MB    | ########## | 100% 
+libstdcxx-ng-13.2.0  | 3.7 MB    |            |   0% libstdcxx-ng-13.2.0  | 3.7 MB    | #####8     |  59% libstdcxx-ng-13.2.0  | 3.7 MB    | ########## | 100% 
+soxr-0.1.3           | 128 KB    |            |   0% soxr-0.1.3           | 128 KB    | ########## | 100% 
+mpg123-1.32.4        | 480 KB    |            |   0% mpg123-1.32.4        | 480 KB    | ########## | 100% 
+numba-0.59.0         | 4.0 MB    |            |   0% numba-0.59.0         | 4.0 MB    | ####3      |  44% numba-0.59.0         | 4.0 MB    | ########## | 100% numba-0.59.0         | 4.0 MB    | ########## | 100% 
+openssl-3.2.1        | 2.7 MB    |            |   0% openssl-3.2.1        | 2.7 MB    | ######9    |  70% openssl-3.2.1        | 2.7 MB    | ########## | 100% 
+_libgcc_mutex-0.1    | 3 KB      |            |   0% _libgcc_mutex-0.1    | 3 KB      | ########## | 100% 
+certifi-2024.2.2     | 157 KB    |            |   0% certifi-2024.2.2     | 157 KB    | ########## | 100% 
+ruamel.yaml-0.17.40  | 192 KB    |            |   0% ruamel.yaml-0.17.40  | 192 KB    | ########## | 100% 
+libgcc-ng-13.2.0     | 752 KB    |            |   0% libgcc-ng-13.2.0     | 752 KB    | ########## | 100% 
+conda-22.11.1        | 904 KB    |            |   0% conda-22.11.1        | 904 KB    | ########## | 100% conda-22.11.1        | 904 KB    | ########## | 100% 
+soxr-python-0.3.7    | 266 KB    |            |   0% soxr-python-0.3.7    | 266 KB    | ########## | 100% 
+gettext-0.21.1       | 4.1 MB    |            |   0% gettext-0.21.1       | 4.1 MB    | ###9       |  40% gettext-0.21.1       | 4.1 MB    | ########## | 100% gettext-0.21.1       | 4.1 MB    | ########## | 100% 
+libsndfile-1.2.2     | 346 KB    |            |   0% libsndfile-1.2.2     | 346 KB    | ########## | 100% 
+pysoundfile-0.12.1   | 28 KB     |            |   0% pysoundfile-0.12.1   | 28 KB     | ########## | 100% 
+librosa-0.10.1       | 189 KB    |            |   0% librosa-0.10.1       | 189 KB    | ########## | 100% librosa-0.10.1       | 189 KB    | ########## | 100% 
+ruamel.yaml.clib-0.2 | 142 KB    |            |   0% ruamel.yaml.clib-0.2 | 142 KB    | ########## | 100% 
+pooch-1.8.0          | 51 KB     |            |   0% pooch-1.8.0          | 51 KB     | ########## | 100% 
+Preparing transaction: ...working... done
+Verifying transaction: ...working... done
+Executing transaction: ...working... done
+Retrieving notices: ...working... done
+Collecting package metadata (current_repodata.json): ...working... done
+Solving environment: ...working... done
+
+# All requested packages already installed.
+
+Requirement already satisfied: dcase_util in /home/user/anaconda3/lib/python3.9/site-packages (0.2.20)
+Requirement already satisfied: numpy>=1.9.2 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase_util) (1.26.3)
+Requirement already satisfied: scipy>=0.19.1 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase_util) (1.11.4)
+Requirement already satisfied: matplotlib>=2.0.0 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase_util) (3.8.0)
+Requirement already satisfied: librosa>=0.7.0 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase_util) (0.10.1)
+Requirement already satisfied: six>=1.10.0 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase_util) (1.16.0)
+Requirement already satisfied: future>=0.16.0 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase_util) (0.18.3)
+Requirement already satisfied: soundfile>=0.9.0 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase_util) (0.10.3.post1)
+Requirement already satisfied: pyyaml>=3.11 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase_util) (6.0.1)
+Requirement already satisfied: requests>=2.12.4 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase_util) (2.31.0)
+Requirement already satisfied: tqdm>=4.11.2 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase_util) (4.66.2)
+Requirement already satisfied: pydot-ng>=1.0.0 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase_util) (2.0.0)
+Requirement already satisfied: validators>=0.12.0 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase_util) (0.20.0)
+Requirement already satisfied: python-magic>=0.4.13 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase_util) (0.4.27)
+Requirement already satisfied: audioread>=2.1.9 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase_util) (3.0.0)
+Requirement already satisfied: scikit-learn>=0.20.0 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase_util) (1.3.0)
+Requirement already satisfied: joblib>=0.14 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase_util) (1.2.0)
+Requirement already satisfied: decorator>=4.3.0 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase_util) (5.1.1)
+Requirement already satisfied: numba>=0.51.0 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase_util) (0.57.1)
+Collecting soundfile>=0.9.0 (from dcase_util)
+  Downloading soundfile-0.12.1-py2.py3-none-manylinux_2_31_x86_64.whl (1.2 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 18.5 MB/s eta 0:00:00
+Requirement already satisfied: pooch>=1.0 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase_util) (1.6.0)
+Requirement already satisfied: soxr>=0.3.2 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase_util) (0.3.7)
+Requirement already satisfied: typing-extensions>=4.1.1 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase_util) (4.9.0)
+Requirement already satisfied: lazy-loader>=0.1 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase_util) (0.3)
+Requirement already satisfied: msgpack>=1.0 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase_util) (1.0.3)
+Requirement already satisfied: contourpy>=1.0.1 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=2.0.0->dcase_util) (1.2.0)
+Requirement already satisfied: cycler>=0.10 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=2.0.0->dcase_util) (0.11.0)
+Requirement already satisfied: fonttools>=4.22.0 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=2.0.0->dcase_util) (4.25.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=2.0.0->dcase_util) (1.4.4)
+Requirement already satisfied: packaging>=20.0 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=2.0.0->dcase_util) (23.1)
+Requirement already satisfied: pillow>=6.2.0 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=2.0.0->dcase_util) (10.2.0)
+Requirement already satisfied: pyparsing>=2.3.1 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=2.0.0->dcase_util) (3.0.9)
+Requirement already satisfied: python-dateutil>=2.7 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=2.0.0->dcase_util) (2.8.2)
+Requirement already satisfied: importlib-resources>=3.2.0 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=2.0.0->dcase_util) (6.1.1)
+Requirement already satisfied: charset-normalizer<4,>=2 in /home/user/anaconda3/lib/python3.9/site-packages (from requests>=2.12.4->dcase_util) (2.0.4)
+Requirement already satisfied: idna<4,>=2.5 in /home/user/anaconda3/lib/python3.9/site-packages (from requests>=2.12.4->dcase_util) (3.4)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /home/user/anaconda3/lib/python3.9/site-packages (from requests>=2.12.4->dcase_util) (1.26.18)
+Requirement already satisfied: certifi>=2017.4.17 in /home/user/anaconda3/lib/python3.9/site-packages (from requests>=2.12.4->dcase_util) (2024.2.2)
+Requirement already satisfied: cffi>=1.0 in /home/user/anaconda3/lib/python3.9/site-packages (from soundfile>=0.9.0->dcase_util) (1.16.0)
+Requirement already satisfied: pycparser in /home/user/anaconda3/lib/python3.9/site-packages (from cffi>=1.0->soundfile>=0.9.0->dcase_util) (2.21)
+Requirement already satisfied: zipp>=3.1.0 in /home/user/anaconda3/lib/python3.9/site-packages (from importlib-resources>=3.2.0->matplotlib>=2.0.0->dcase_util) (3.17.0)
+Requirement already satisfied: llvmlite<0.41,>=0.40.0dev0 in /home/user/anaconda3/lib/python3.9/site-packages (from numba>=0.51.0->librosa>=0.7.0->dcase_util) (0.40.1)
+Collecting numpy>=1.9.2 (from dcase_util)
+  Downloading numpy-1.24.4-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (5.6 kB)
+Requirement already satisfied: appdirs>=1.3.0 in /home/user/anaconda3/lib/python3.9/site-packages (from pooch>=1.0->librosa>=0.7.0->dcase_util) (1.4.4)
+Requirement already satisfied: threadpoolctl>=2.0.0 in /home/user/anaconda3/lib/python3.9/site-packages (from scikit-learn>=0.20.0->librosa>=0.7.0->dcase_util) (2.2.0)
+Downloading numpy-1.24.4-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (17.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 17.3/17.3 MB 29.5 MB/s eta 0:00:00
+Installing collected packages: numpy, soundfile
+  Attempting uninstall: numpy
+    Found existing installation: numpy 1.26.3
+    Uninstalling numpy-1.26.3:
+      Successfully uninstalled numpy-1.26.3
+  Attempting uninstall: soundfile
+    Found existing installation: SoundFile 0.10.3.post1
+    Uninstalling SoundFile-0.10.3.post1:
+      Successfully uninstalled SoundFile-0.10.3.post1
+Successfully installed numpy-1.24.4 soundfile-0.12.1
+Requirement already satisfied: sed-eval in /home/user/anaconda3/lib/python3.9/site-packages (0.2.1)
+Requirement already satisfied: numpy>=1.7.0 in /home/user/anaconda3/lib/python3.9/site-packages (from sed-eval) (1.24.4)
+Requirement already satisfied: dcase-util>=0.2.4 in /home/user/anaconda3/lib/python3.9/site-packages (from sed-eval) (0.2.20)
+Requirement already satisfied: scipy>=0.19.1 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase-util>=0.2.4->sed-eval) (1.11.4)
+Requirement already satisfied: matplotlib>=2.0.0 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase-util>=0.2.4->sed-eval) (3.8.0)
+Requirement already satisfied: librosa>=0.7.0 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase-util>=0.2.4->sed-eval) (0.10.1)
+Requirement already satisfied: six>=1.10.0 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase-util>=0.2.4->sed-eval) (1.16.0)
+Requirement already satisfied: future>=0.16.0 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase-util>=0.2.4->sed-eval) (0.18.3)
+Requirement already satisfied: soundfile>=0.9.0 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase-util>=0.2.4->sed-eval) (0.12.1)
+Requirement already satisfied: pyyaml>=3.11 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase-util>=0.2.4->sed-eval) (6.0.1)
+Requirement already satisfied: requests>=2.12.4 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase-util>=0.2.4->sed-eval) (2.31.0)
+Requirement already satisfied: tqdm>=4.11.2 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase-util>=0.2.4->sed-eval) (4.66.2)
+Requirement already satisfied: pydot-ng>=1.0.0 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase-util>=0.2.4->sed-eval) (2.0.0)
+Requirement already satisfied: validators>=0.12.0 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase-util>=0.2.4->sed-eval) (0.20.0)
+Requirement already satisfied: python-magic>=0.4.13 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase-util>=0.2.4->sed-eval) (0.4.27)
+Requirement already satisfied: audioread>=2.1.9 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase-util>=0.2.4->sed-eval) (3.0.0)
+Requirement already satisfied: scikit-learn>=0.20.0 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase-util>=0.2.4->sed-eval) (1.3.0)
+Requirement already satisfied: joblib>=0.14 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase-util>=0.2.4->sed-eval) (1.2.0)
+Requirement already satisfied: decorator>=4.3.0 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase-util>=0.2.4->sed-eval) (5.1.1)
+Requirement already satisfied: numba>=0.51.0 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase-util>=0.2.4->sed-eval) (0.57.1)
+Requirement already satisfied: pooch>=1.0 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase-util>=0.2.4->sed-eval) (1.6.0)
+Requirement already satisfied: soxr>=0.3.2 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase-util>=0.2.4->sed-eval) (0.3.7)
+Requirement already satisfied: typing-extensions>=4.1.1 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase-util>=0.2.4->sed-eval) (4.9.0)
+Requirement already satisfied: lazy-loader>=0.1 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase-util>=0.2.4->sed-eval) (0.3)
+Requirement already satisfied: msgpack>=1.0 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase-util>=0.2.4->sed-eval) (1.0.3)
+Requirement already satisfied: contourpy>=1.0.1 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=2.0.0->dcase-util>=0.2.4->sed-eval) (1.2.0)
+Requirement already satisfied: cycler>=0.10 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=2.0.0->dcase-util>=0.2.4->sed-eval) (0.11.0)
+Requirement already satisfied: fonttools>=4.22.0 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=2.0.0->dcase-util>=0.2.4->sed-eval) (4.25.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=2.0.0->dcase-util>=0.2.4->sed-eval) (1.4.4)
+Requirement already satisfied: packaging>=20.0 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=2.0.0->dcase-util>=0.2.4->sed-eval) (23.1)
+Requirement already satisfied: pillow>=6.2.0 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=2.0.0->dcase-util>=0.2.4->sed-eval) (10.2.0)
+Requirement already satisfied: pyparsing>=2.3.1 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=2.0.0->dcase-util>=0.2.4->sed-eval) (3.0.9)
+Requirement already satisfied: python-dateutil>=2.7 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=2.0.0->dcase-util>=0.2.4->sed-eval) (2.8.2)
+Requirement already satisfied: importlib-resources>=3.2.0 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=2.0.0->dcase-util>=0.2.4->sed-eval) (6.1.1)
+Requirement already satisfied: charset-normalizer<4,>=2 in /home/user/anaconda3/lib/python3.9/site-packages (from requests>=2.12.4->dcase-util>=0.2.4->sed-eval) (2.0.4)
+Requirement already satisfied: idna<4,>=2.5 in /home/user/anaconda3/lib/python3.9/site-packages (from requests>=2.12.4->dcase-util>=0.2.4->sed-eval) (3.4)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /home/user/anaconda3/lib/python3.9/site-packages (from requests>=2.12.4->dcase-util>=0.2.4->sed-eval) (1.26.18)
+Requirement already satisfied: certifi>=2017.4.17 in /home/user/anaconda3/lib/python3.9/site-packages (from requests>=2.12.4->dcase-util>=0.2.4->sed-eval) (2024.2.2)
+Requirement already satisfied: cffi>=1.0 in /home/user/anaconda3/lib/python3.9/site-packages (from soundfile>=0.9.0->dcase-util>=0.2.4->sed-eval) (1.16.0)
+Requirement already satisfied: pycparser in /home/user/anaconda3/lib/python3.9/site-packages (from cffi>=1.0->soundfile>=0.9.0->dcase-util>=0.2.4->sed-eval) (2.21)
+Requirement already satisfied: zipp>=3.1.0 in /home/user/anaconda3/lib/python3.9/site-packages (from importlib-resources>=3.2.0->matplotlib>=2.0.0->dcase-util>=0.2.4->sed-eval) (3.17.0)
+Requirement already satisfied: llvmlite<0.41,>=0.40.0dev0 in /home/user/anaconda3/lib/python3.9/site-packages (from numba>=0.51.0->librosa>=0.7.0->dcase-util>=0.2.4->sed-eval) (0.40.1)
+Requirement already satisfied: appdirs>=1.3.0 in /home/user/anaconda3/lib/python3.9/site-packages (from pooch>=1.0->librosa>=0.7.0->dcase-util>=0.2.4->sed-eval) (1.4.4)
+Requirement already satisfied: threadpoolctl>=2.0.0 in /home/user/anaconda3/lib/python3.9/site-packages (from scikit-learn>=0.20.0->librosa>=0.7.0->dcase-util>=0.2.4->sed-eval) (2.2.0)
+Requirement already satisfied: psds_eval in /home/user/anaconda3/lib/python3.9/site-packages (0.5.2)
+Collecting psds_eval
+  Downloading psds_eval-0.5.3-py3-none-any.whl (20 kB)
+Requirement already satisfied: pandas>=0.19 in /home/user/anaconda3/lib/python3.9/site-packages (from psds_eval) (1.4.4)
+Requirement already satisfied: numpy>=1.9.0 in /home/user/anaconda3/lib/python3.9/site-packages (from psds_eval) (1.24.4)
+Requirement already satisfied: matplotlib>=3.1.0 in /home/user/anaconda3/lib/python3.9/site-packages (from psds_eval) (3.8.0)
+Requirement already satisfied: pytest>=4.3 in /home/user/anaconda3/lib/python3.9/site-packages (from psds_eval) (7.4.0)
+Requirement already satisfied: contourpy>=1.0.1 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=3.1.0->psds_eval) (1.2.0)
+Requirement already satisfied: cycler>=0.10 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=3.1.0->psds_eval) (0.11.0)
+Requirement already satisfied: fonttools>=4.22.0 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=3.1.0->psds_eval) (4.25.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=3.1.0->psds_eval) (1.4.4)
+Requirement already satisfied: packaging>=20.0 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=3.1.0->psds_eval) (23.1)
+Requirement already satisfied: pillow>=6.2.0 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=3.1.0->psds_eval) (10.2.0)
+Requirement already satisfied: pyparsing>=2.3.1 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=3.1.0->psds_eval) (3.0.9)
+Requirement already satisfied: python-dateutil>=2.7 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=3.1.0->psds_eval) (2.8.2)
+Requirement already satisfied: importlib-resources>=3.2.0 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=3.1.0->psds_eval) (6.1.1)
+Requirement already satisfied: pytz>=2020.1 in /home/user/anaconda3/lib/python3.9/site-packages (from pandas>=0.19->psds_eval) (2023.3.post1)
+Requirement already satisfied: iniconfig in /home/user/anaconda3/lib/python3.9/site-packages (from pytest>=4.3->psds_eval) (1.1.1)
+Requirement already satisfied: pluggy<2.0,>=0.12 in /home/user/anaconda3/lib/python3.9/site-packages (from pytest>=4.3->psds_eval) (1.0.0)
+Requirement already satisfied: exceptiongroup>=1.0.0rc8 in /home/user/anaconda3/lib/python3.9/site-packages (from pytest>=4.3->psds_eval) (1.1.1)
+Requirement already satisfied: tomli>=1.0.0 in /home/user/anaconda3/lib/python3.9/site-packages (from pytest>=4.3->psds_eval) (2.0.1)
+Requirement already satisfied: zipp>=3.1.0 in /home/user/anaconda3/lib/python3.9/site-packages (from importlib-resources>=3.2.0->matplotlib>=3.1.0->psds_eval) (3.17.0)
+Requirement already satisfied: six>=1.5 in /home/user/anaconda3/lib/python3.9/site-packages (from python-dateutil>=2.7->matplotlib>=3.1.0->psds_eval) (1.16.0)
+Installing collected packages: psds_eval
+  Attempting uninstall: psds_eval
+    Found existing installation: psds-eval 0.5.2
+    Uninstalling psds-eval-0.5.2:
+      Successfully uninstalled psds-eval-0.5.2
+Successfully installed psds_eval-0.5.3
+Requirement already satisfied: scaper in /home/user/anaconda3/lib/python3.9/site-packages (1.6.5)
+Requirement already satisfied: sox==1.4.0 in /home/user/anaconda3/lib/python3.9/site-packages (from scaper) (1.4.0)
+Requirement already satisfied: jams>=0.3.2 in /home/user/anaconda3/lib/python3.9/site-packages (from scaper) (0.3.4)
+Requirement already satisfied: numpy>=1.13.3 in /home/user/anaconda3/lib/python3.9/site-packages (from scaper) (1.24.4)
+Requirement already satisfied: pyloudnorm in /home/user/anaconda3/lib/python3.9/site-packages (from scaper) (0.1.0)
+Requirement already satisfied: soundfile in /home/user/anaconda3/lib/python3.9/site-packages (from scaper) (0.12.1)
+Requirement already satisfied: soxbindings>=1.2.2 in /home/user/anaconda3/lib/python3.9/site-packages (from scaper) (1.2.3)
+Requirement already satisfied: pandas in /home/user/anaconda3/lib/python3.9/site-packages (from jams>=0.3.2->scaper) (1.4.4)
+Requirement already satisfied: sortedcontainers>=2.0.0 in /home/user/anaconda3/lib/python3.9/site-packages (from jams>=0.3.2->scaper) (2.4.0)
+Requirement already satisfied: jsonschema>=3.0.0 in /home/user/anaconda3/lib/python3.9/site-packages (from jams>=0.3.2->scaper) (4.19.2)
+Requirement already satisfied: six in /home/user/anaconda3/lib/python3.9/site-packages (from jams>=0.3.2->scaper) (1.16.0)
+Requirement already satisfied: decorator in /home/user/anaconda3/lib/python3.9/site-packages (from jams>=0.3.2->scaper) (5.1.1)
+Requirement already satisfied: mir-eval>=0.5 in /home/user/anaconda3/lib/python3.9/site-packages (from jams>=0.3.2->scaper) (0.7)
+Requirement already satisfied: scipy>=1.0.1 in /home/user/anaconda3/lib/python3.9/site-packages (from pyloudnorm->scaper) (1.11.4)
+Requirement already satisfied: future>=0.16.0 in /home/user/anaconda3/lib/python3.9/site-packages (from pyloudnorm->scaper) (0.18.3)
+Requirement already satisfied: cffi>=1.0 in /home/user/anaconda3/lib/python3.9/site-packages (from soundfile->scaper) (1.16.0)
+Requirement already satisfied: pycparser in /home/user/anaconda3/lib/python3.9/site-packages (from cffi>=1.0->soundfile->scaper) (2.21)
+Requirement already satisfied: attrs>=22.2.0 in /home/user/anaconda3/lib/python3.9/site-packages (from jsonschema>=3.0.0->jams>=0.3.2->scaper) (23.1.0)
+Requirement already satisfied: jsonschema-specifications>=2023.03.6 in /home/user/anaconda3/lib/python3.9/site-packages (from jsonschema>=3.0.0->jams>=0.3.2->scaper) (2023.7.1)
+Requirement already satisfied: referencing>=0.28.4 in /home/user/anaconda3/lib/python3.9/site-packages (from jsonschema>=3.0.0->jams>=0.3.2->scaper) (0.30.2)
+Requirement already satisfied: rpds-py>=0.7.1 in /home/user/anaconda3/lib/python3.9/site-packages (from jsonschema>=3.0.0->jams>=0.3.2->scaper) (0.10.6)
+Requirement already satisfied: python-dateutil>=2.8.1 in /home/user/anaconda3/lib/python3.9/site-packages (from pandas->jams>=0.3.2->scaper) (2.8.2)
+Requirement already satisfied: pytz>=2020.1 in /home/user/anaconda3/lib/python3.9/site-packages (from pandas->jams>=0.3.2->scaper) (2023.3.post1)
+Collecting desed@ git+https://github.com/turpaultn/DESED
+  Cloning https://github.com/turpaultn/DESED to /tmp/pip-install-31_9ce1n/desed_f5cd817589a947bf80d98909fbddfcdd
+  Resolved https://github.com/turpaultn/DESED to commit af3a5d5be9213239f42cf1c72f538e8058d8d2e4
+  Preparing metadata (setup.py): started
+  Preparing metadata (setup.py): finished with status 'done'
+Requirement already satisfied: scaper>=1.6.5rc0 in /home/user/anaconda3/lib/python3.9/site-packages (from desed@ git+https://github.com/turpaultn/DESED) (1.6.5)
+Requirement already satisfied: numpy>=1.15.4 in /home/user/anaconda3/lib/python3.9/site-packages (from desed@ git+https://github.com/turpaultn/DESED) (1.24.4)
+Requirement already satisfied: pandas>=0.24.0 in /home/user/anaconda3/lib/python3.9/site-packages (from desed@ git+https://github.com/turpaultn/DESED) (1.4.4)
+Requirement already satisfied: dcase-util>=0.2.11 in /home/user/anaconda3/lib/python3.9/site-packages (from desed@ git+https://github.com/turpaultn/DESED) (0.2.20)
+Requirement already satisfied: yt-dlp>=2022.3.8.2 in /home/user/anaconda3/lib/python3.9/site-packages (from desed@ git+https://github.com/turpaultn/DESED) (2022.9.1)
+Requirement already satisfied: soundfile>=0.10.1 in /home/user/anaconda3/lib/python3.9/site-packages (from desed@ git+https://github.com/turpaultn/DESED) (0.12.1)
+Requirement already satisfied: jams>=0.3.4 in /home/user/anaconda3/lib/python3.9/site-packages (from desed@ git+https://github.com/turpaultn/DESED) (0.3.4)
+Requirement already satisfied: tqdm>=4.29.1 in /home/user/anaconda3/lib/python3.9/site-packages (from desed@ git+https://github.com/turpaultn/DESED) (4.66.2)
+Requirement already satisfied: requests>=2.21.0 in /home/user/anaconda3/lib/python3.9/site-packages (from desed@ git+https://github.com/turpaultn/DESED) (2.31.0)
+Requirement already satisfied: scipy>=0.19.1 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (1.11.4)
+Requirement already satisfied: matplotlib>=2.0.0 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (3.8.0)
+Requirement already satisfied: librosa>=0.7.0 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (0.10.1)
+Requirement already satisfied: six>=1.10.0 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (1.16.0)
+Requirement already satisfied: future>=0.16.0 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (0.18.3)
+Requirement already satisfied: pyyaml>=3.11 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (6.0.1)
+Requirement already satisfied: pydot-ng>=1.0.0 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (2.0.0)
+Requirement already satisfied: validators>=0.12.0 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (0.20.0)
+Requirement already satisfied: python-magic>=0.4.13 in /home/user/anaconda3/lib/python3.9/site-packages (from dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (0.4.27)
+Requirement already satisfied: sortedcontainers>=2.0.0 in /home/user/anaconda3/lib/python3.9/site-packages (from jams>=0.3.4->desed@ git+https://github.com/turpaultn/DESED) (2.4.0)
+Requirement already satisfied: jsonschema>=3.0.0 in /home/user/anaconda3/lib/python3.9/site-packages (from jams>=0.3.4->desed@ git+https://github.com/turpaultn/DESED) (4.19.2)
+Requirement already satisfied: decorator in /home/user/anaconda3/lib/python3.9/site-packages (from jams>=0.3.4->desed@ git+https://github.com/turpaultn/DESED) (5.1.1)
+Requirement already satisfied: mir-eval>=0.5 in /home/user/anaconda3/lib/python3.9/site-packages (from jams>=0.3.4->desed@ git+https://github.com/turpaultn/DESED) (0.7)
+Requirement already satisfied: python-dateutil>=2.8.1 in /home/user/anaconda3/lib/python3.9/site-packages (from pandas>=0.24.0->desed@ git+https://github.com/turpaultn/DESED) (2.8.2)
+Requirement already satisfied: pytz>=2020.1 in /home/user/anaconda3/lib/python3.9/site-packages (from pandas>=0.24.0->desed@ git+https://github.com/turpaultn/DESED) (2023.3.post1)
+Requirement already satisfied: charset-normalizer<4,>=2 in /home/user/anaconda3/lib/python3.9/site-packages (from requests>=2.21.0->desed@ git+https://github.com/turpaultn/DESED) (2.0.4)
+Requirement already satisfied: idna<4,>=2.5 in /home/user/anaconda3/lib/python3.9/site-packages (from requests>=2.21.0->desed@ git+https://github.com/turpaultn/DESED) (3.4)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /home/user/anaconda3/lib/python3.9/site-packages (from requests>=2.21.0->desed@ git+https://github.com/turpaultn/DESED) (1.26.18)
+Requirement already satisfied: certifi>=2017.4.17 in /home/user/anaconda3/lib/python3.9/site-packages (from requests>=2.21.0->desed@ git+https://github.com/turpaultn/DESED) (2024.2.2)
+Requirement already satisfied: sox==1.4.0 in /home/user/anaconda3/lib/python3.9/site-packages (from scaper>=1.6.5rc0->desed@ git+https://github.com/turpaultn/DESED) (1.4.0)
+Requirement already satisfied: pyloudnorm in /home/user/anaconda3/lib/python3.9/site-packages (from scaper>=1.6.5rc0->desed@ git+https://github.com/turpaultn/DESED) (0.1.0)
+Requirement already satisfied: soxbindings>=1.2.2 in /home/user/anaconda3/lib/python3.9/site-packages (from scaper>=1.6.5rc0->desed@ git+https://github.com/turpaultn/DESED) (1.2.3)
+Requirement already satisfied: cffi>=1.0 in /home/user/anaconda3/lib/python3.9/site-packages (from soundfile>=0.10.1->desed@ git+https://github.com/turpaultn/DESED) (1.16.0)
+Requirement already satisfied: mutagen in /home/user/anaconda3/lib/python3.9/site-packages (from yt-dlp>=2022.3.8.2->desed@ git+https://github.com/turpaultn/DESED) (1.45.1)
+Requirement already satisfied: pycryptodomex in /home/user/anaconda3/lib/python3.9/site-packages (from yt-dlp>=2022.3.8.2->desed@ git+https://github.com/turpaultn/DESED) (3.15.0)
+Requirement already satisfied: websockets in /home/user/anaconda3/lib/python3.9/site-packages (from yt-dlp>=2022.3.8.2->desed@ git+https://github.com/turpaultn/DESED) (10.3)
+Requirement already satisfied: brotli in /home/user/anaconda3/lib/python3.9/site-packages (from yt-dlp>=2022.3.8.2->desed@ git+https://github.com/turpaultn/DESED) (1.0.9)
+Requirement already satisfied: pycparser in /home/user/anaconda3/lib/python3.9/site-packages (from cffi>=1.0->soundfile>=0.10.1->desed@ git+https://github.com/turpaultn/DESED) (2.21)
+Requirement already satisfied: attrs>=22.2.0 in /home/user/anaconda3/lib/python3.9/site-packages (from jsonschema>=3.0.0->jams>=0.3.4->desed@ git+https://github.com/turpaultn/DESED) (23.1.0)
+Requirement already satisfied: jsonschema-specifications>=2023.03.6 in /home/user/anaconda3/lib/python3.9/site-packages (from jsonschema>=3.0.0->jams>=0.3.4->desed@ git+https://github.com/turpaultn/DESED) (2023.7.1)
+Requirement already satisfied: referencing>=0.28.4 in /home/user/anaconda3/lib/python3.9/site-packages (from jsonschema>=3.0.0->jams>=0.3.4->desed@ git+https://github.com/turpaultn/DESED) (0.30.2)
+Requirement already satisfied: rpds-py>=0.7.1 in /home/user/anaconda3/lib/python3.9/site-packages (from jsonschema>=3.0.0->jams>=0.3.4->desed@ git+https://github.com/turpaultn/DESED) (0.10.6)
+Requirement already satisfied: audioread>=2.1.9 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (3.0.0)
+Requirement already satisfied: scikit-learn>=0.20.0 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (1.3.0)
+Requirement already satisfied: joblib>=0.14 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (1.2.0)
+Requirement already satisfied: numba>=0.51.0 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (0.57.1)
+Requirement already satisfied: pooch>=1.0 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (1.6.0)
+Requirement already satisfied: soxr>=0.3.2 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (0.3.7)
+Requirement already satisfied: typing-extensions>=4.1.1 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (4.9.0)
+Requirement already satisfied: lazy-loader>=0.1 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (0.3)
+Requirement already satisfied: msgpack>=1.0 in /home/user/anaconda3/lib/python3.9/site-packages (from librosa>=0.7.0->dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (1.0.3)
+Requirement already satisfied: contourpy>=1.0.1 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=2.0.0->dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (1.2.0)
+Requirement already satisfied: cycler>=0.10 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=2.0.0->dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (0.11.0)
+Requirement already satisfied: fonttools>=4.22.0 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=2.0.0->dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (4.25.0)
+Requirement already satisfied: kiwisolver>=1.0.1 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=2.0.0->dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (1.4.4)
+Requirement already satisfied: packaging>=20.0 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=2.0.0->dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (23.1)
+Requirement already satisfied: pillow>=6.2.0 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=2.0.0->dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (10.2.0)
+Requirement already satisfied: pyparsing>=2.3.1 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=2.0.0->dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (3.0.9)
+Requirement already satisfied: importlib-resources>=3.2.0 in /home/user/anaconda3/lib/python3.9/site-packages (from matplotlib>=2.0.0->dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (6.1.1)
+Requirement already satisfied: zipp>=3.1.0 in /home/user/anaconda3/lib/python3.9/site-packages (from importlib-resources>=3.2.0->matplotlib>=2.0.0->dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (3.17.0)
+Requirement already satisfied: llvmlite<0.41,>=0.40.0dev0 in /home/user/anaconda3/lib/python3.9/site-packages (from numba>=0.51.0->librosa>=0.7.0->dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (0.40.1)
+Requirement already satisfied: appdirs>=1.3.0 in /home/user/anaconda3/lib/python3.9/site-packages (from pooch>=1.0->librosa>=0.7.0->dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (1.4.4)
+Requirement already satisfied: threadpoolctl>=2.0.0 in /home/user/anaconda3/lib/python3.9/site-packages (from scikit-learn>=0.20.0->librosa>=0.7.0->dcase-util>=0.2.11->desed@ git+https://github.com/turpaultn/DESED) (2.2.0)
+Building wheels for collected packages: desed
+  Building wheel for desed (setup.py): started
+  Building wheel for desed (setup.py): finished with status 'done'
+  Created wheel for desed: filename=desed-1.3.7-py3-none-any.whl size=35709 sha256=7dcf188d22382ebca6ca90e43aced7f09c8bac21d6a964f212f1d4657d21fbc8
+  Stored in directory: /tmp/pip-ephem-wheel-cache-bsei7s6w/wheels/2a/a8/55/eece183c33dd317d2d1c0b6ad7b4f048e001ef1fdfe5f228e0
+Successfully built desed
+Installing collected packages: desed
+  Attempting uninstall: desed
+    Found existing installation: desed 1.3.7
+    Uninstalling desed-1.3.7:
+      Successfully uninstalled desed-1.3.7
+Successfully installed desed-1.3.7
+Requirement already satisfied: tensorflow in /home/user/anaconda3/lib/python3.9/site-packages (2.12.0)
+Requirement already satisfied: absl-py>=1.0.0 in /home/user/anaconda3/lib/python3.9/site-packages (from tensorflow) (1.4.0)
+Requirement already satisfied: astunparse>=1.6.0 in /home/user/anaconda3/lib/python3.9/site-packages (from tensorflow) (1.6.3)
+Requirement already satisfied: flatbuffers>=2.0 in /home/user/anaconda3/lib/python3.9/site-packages (from tensorflow) (23.3.3)
+Requirement already satisfied: gast<=0.4.0,>=0.2.1 in /home/user/anaconda3/lib/python3.9/site-packages (from tensorflow) (0.4.0)
+Requirement already satisfied: google-pasta>=0.1.1 in /home/user/anaconda3/lib/python3.9/site-packages (from tensorflow) (0.2.0)
+Requirement already satisfied: grpcio<2.0,>=1.24.3 in /home/user/anaconda3/lib/python3.9/site-packages (from tensorflow) (1.53.0)
+Requirement already satisfied: h5py>=2.9.0 in /home/user/anaconda3/lib/python3.9/site-packages (from tensorflow) (3.9.0)
+Requirement already satisfied: jax>=0.3.15 in /home/user/anaconda3/lib/python3.9/site-packages (from tensorflow) (0.4.8)
+Requirement already satisfied: keras<2.13,>=2.12.0 in /home/user/anaconda3/lib/python3.9/site-packages (from tensorflow) (2.12.0)
+Requirement already satisfied: libclang>=13.0.0 in /home/user/anaconda3/lib/python3.9/site-packages (from tensorflow) (16.0.0)
+Collecting numpy<1.24,>=1.22 (from tensorflow)
+  Downloading numpy-1.23.5-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (17.1 MB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 17.1/17.1 MB 32.8 MB/s eta 0:00:00
+Requirement already satisfied: opt-einsum>=2.3.2 in /home/user/anaconda3/lib/python3.9/site-packages (from tensorflow) (3.3.0)
+Requirement already satisfied: packaging in /home/user/anaconda3/lib/python3.9/site-packages (from tensorflow) (23.1)
+Requirement already satisfied: protobuf!=4.21.0,!=4.21.1,!=4.21.2,!=4.21.3,!=4.21.4,!=4.21.5,<5.0.0dev,>=3.20.3 in /home/user/anaconda3/lib/python3.9/site-packages (from tensorflow) (4.22.1)
+Requirement already satisfied: setuptools in /home/user/anaconda3/lib/python3.9/site-packages (from tensorflow) (68.2.2)
+Requirement already satisfied: six>=1.12.0 in /home/user/anaconda3/lib/python3.9/site-packages (from tensorflow) (1.16.0)
+Requirement already satisfied: tensorboard<2.13,>=2.12 in /home/user/anaconda3/lib/python3.9/site-packages (from tensorflow) (2.12.1)
+Requirement already satisfied: tensorflow-estimator<2.13,>=2.12.0 in /home/user/anaconda3/lib/python3.9/site-packages (from tensorflow) (2.12.0)
+Requirement already satisfied: termcolor>=1.1.0 in /home/user/anaconda3/lib/python3.9/site-packages (from tensorflow) (2.2.0)
+Requirement already satisfied: typing-extensions>=3.6.6 in /home/user/anaconda3/lib/python3.9/site-packages (from tensorflow) (4.9.0)
+Requirement already satisfied: wrapt<1.15,>=1.11.0 in /home/user/anaconda3/lib/python3.9/site-packages (from tensorflow) (1.14.1)
+Requirement already satisfied: tensorflow-io-gcs-filesystem>=0.23.1 in /home/user/anaconda3/lib/python3.9/site-packages (from tensorflow) (0.32.0)
+Requirement already satisfied: wheel<1.0,>=0.23.0 in /home/user/anaconda3/lib/python3.9/site-packages (from astunparse>=1.6.0->tensorflow) (0.41.2)
+Requirement already satisfied: ml-dtypes>=0.0.3 in /home/user/anaconda3/lib/python3.9/site-packages (from jax>=0.3.15->tensorflow) (0.0.4)
+Requirement already satisfied: scipy>=1.7 in /home/user/anaconda3/lib/python3.9/site-packages (from jax>=0.3.15->tensorflow) (1.11.4)
+Requirement already satisfied: google-auth<3,>=1.6.3 in /home/user/anaconda3/lib/python3.9/site-packages (from tensorboard<2.13,>=2.12->tensorflow) (2.17.1)
+Requirement already satisfied: google-auth-oauthlib<1.1,>=0.5 in /home/user/anaconda3/lib/python3.9/site-packages (from tensorboard<2.13,>=2.12->tensorflow) (1.0.0)
+Requirement already satisfied: markdown>=2.6.8 in /home/user/anaconda3/lib/python3.9/site-packages (from tensorboard<2.13,>=2.12->tensorflow) (3.4.1)
+Requirement already satisfied: requests<3,>=2.21.0 in /home/user/anaconda3/lib/python3.9/site-packages (from tensorboard<2.13,>=2.12->tensorflow) (2.31.0)
+Requirement already satisfied: tensorboard-data-server<0.8.0,>=0.7.0 in /home/user/anaconda3/lib/python3.9/site-packages (from tensorboard<2.13,>=2.12->tensorflow) (0.7.0)
+Requirement already satisfied: tensorboard-plugin-wit>=1.6.0 in /home/user/anaconda3/lib/python3.9/site-packages (from tensorboard<2.13,>=2.12->tensorflow) (1.8.1)
+Requirement already satisfied: werkzeug>=1.0.1 in /home/user/anaconda3/lib/python3.9/site-packages (from tensorboard<2.13,>=2.12->tensorflow) (2.0.3)
+Collecting cachetools<6.0,>=2.0.0 (from google-auth<3,>=1.6.3->tensorboard<2.13,>=2.12->tensorflow)
+  Downloading cachetools-5.3.2-py3-none-any.whl.metadata (5.2 kB)
+Requirement already satisfied: pyasn1-modules>=0.2.1 in /home/user/anaconda3/lib/python3.9/site-packages (from google-auth<3,>=1.6.3->tensorboard<2.13,>=2.12->tensorflow) (0.2.8)
+Collecting rsa<5,>=3.1.4 (from google-auth<3,>=1.6.3->tensorboard<2.13,>=2.12->tensorflow)
+  Downloading rsa-4.9-py3-none-any.whl (34 kB)
+Requirement already satisfied: requests-oauthlib>=0.7.0 in /home/user/anaconda3/lib/python3.9/site-packages (from google-auth-oauthlib<1.1,>=0.5->tensorboard<2.13,>=2.12->tensorflow) (1.3.1)
+Requirement already satisfied: importlib-metadata>=4.4 in /home/user/anaconda3/lib/python3.9/site-packages (from markdown>=2.6.8->tensorboard<2.13,>=2.12->tensorflow) (7.0.1)
+Requirement already satisfied: charset-normalizer<4,>=2 in /home/user/anaconda3/lib/python3.9/site-packages (from requests<3,>=2.21.0->tensorboard<2.13,>=2.12->tensorflow) (2.0.4)
+Requirement already satisfied: idna<4,>=2.5 in /home/user/anaconda3/lib/python3.9/site-packages (from requests<3,>=2.21.0->tensorboard<2.13,>=2.12->tensorflow) (3.4)
+Requirement already satisfied: urllib3<3,>=1.21.1 in /home/user/anaconda3/lib/python3.9/site-packages (from requests<3,>=2.21.0->tensorboard<2.13,>=2.12->tensorflow) (1.26.18)
+Requirement already satisfied: certifi>=2017.4.17 in /home/user/anaconda3/lib/python3.9/site-packages (from requests<3,>=2.21.0->tensorboard<2.13,>=2.12->tensorflow) (2024.2.2)
+Requirement already satisfied: zipp>=0.5 in /home/user/anaconda3/lib/python3.9/site-packages (from importlib-metadata>=4.4->markdown>=2.6.8->tensorboard<2.13,>=2.12->tensorflow) (3.17.0)
+Requirement already satisfied: pyasn1<0.5.0,>=0.4.6 in /home/user/anaconda3/lib/python3.9/site-packages (from pyasn1-modules>=0.2.1->google-auth<3,>=1.6.3->tensorboard<2.13,>=2.12->tensorflow) (0.4.8)
+Requirement already satisfied: oauthlib>=3.0.0 in /home/user/anaconda3/lib/python3.9/site-packages (from requests-oauthlib>=0.7.0->google-auth-oauthlib<1.1,>=0.5->tensorboard<2.13,>=2.12->tensorflow) (3.2.2)
+Downloading cachetools-5.3.2-py3-none-any.whl (9.3 kB)
+Installing collected packages: rsa, numpy, cachetools
+  Attempting uninstall: numpy
+    Found existing installation: numpy 1.24.4
+    Uninstalling numpy-1.24.4:
+      Successfully uninstalled numpy-1.24.4
+Successfully installed cachetools-5.3.2 numpy-1.23.5 rsa-4.9
