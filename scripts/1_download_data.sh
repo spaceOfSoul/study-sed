@@ -29,6 +29,7 @@ mv synthetic ../synthetic
 echo "Done"
 
 # If you did not download the synthetic training background yet
-echo "Download SINS background... (to add TUT, add the option --TUT)"
-python ${SCRIPTS_PATH}/get_background_training.py --basedir=../synthetic
-echo "Done"
+# If download complete, ignore it.
+#echo "Download SINS background... (to add TUT, add the option --TUT)"
+#python ${SCRIPTS_PATH}/get_background_training.py --basedir=../synthetic
+#echo "Done"

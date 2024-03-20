@@ -23,6 +23,9 @@ mv fuss_desed_baseline_dry_2_model ../fuss_desed_baseline_dry_2_model
 CHECKPOINT_MODEL=../fuss_desed_baseline_dry_2_model/fuss_desed_baseline_dry_2_model  # Path pointing to google checkoint
 INFERENCE_META=../fuss_desed_baseline_dry_2_model/fuss_desed_baseline_dry_2_inference.meta  # Path pointing to google metagraph
 
+# numpy upgrade
+pip install --upgrade numpy
+
 ######## Under this line you should not have to change anything ###########
 # Recorded data
 declare -a arr=(${AUDIO_PATH_WEAK} ${AUDIO_PATH_UNLABEL} ${AUDIO_PATH_VALIDATION})

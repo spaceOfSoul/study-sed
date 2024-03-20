@@ -25,5 +25,9 @@ cd ${WORKDIR}
 echo "Done"
 
 echo "Generating wav from jams ..."
+# numpy downgrade
+pip install numpy==1.22.0
 python ${SCRIPTS_PATH}/generate_wav_from_jams.py --jams_folder=${JAMS_PATH} --soundbank=${SOUNDBANK_PATH} \
 --out_audio_dir=${OUT_AUDIO} --save_isolated --save_jams
+# numpy re upgrade
+pip install --upgrade numpy

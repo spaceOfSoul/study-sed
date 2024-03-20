@@ -1,0 +1,359 @@
+INFO - data_utils.Desed - ../dataset/metadata/validation/validation.tsv Total file number: 1168
+INFO - data_utils.Desed - Getting features ...
+INFO - data_utils.Desed - Using 31 cpus
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YKGET1dnWDnQ_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YK_J3sr7Q8nM_40.000_50.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y0cH_NlhhMAs_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YRcquN5Lwo34_0.000_10.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y0lNm9pXXHxA_0.000_9.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YS_dR6POcFiw_0.000_10.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YT04eSlGI3K0_20.000_30.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y0R4uO4Vy9c0_110.000_120.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YbigQH-Nhocc_190.000_200.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YUl2QoW9nNls_50.000_60.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y_URfKwl2kYU_130.000_140.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YPX9kGT0E7B0_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YEhmWEYp0vno_190.000_200.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YL28CnhmeAD4_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YUlOEjgkNdMU_10.000_20.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YNZmsa3iVJuA_0.000_10.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YcJv6x6TN1bw_480.000_490.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y19PS9dyGe64_100.000_110.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Yfr043wF1zhA_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YEe0RIG8OIeo_230.000_240.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YAoy3LDCVbq4_50.000_60.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y_AfYlb7oEsg_330.000_340.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y1bPtEqPp1ZI_20.000_30.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y-jDJ7EqnT2s_170.000_180.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y4p-h_aOrhIw_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YK8yPsF_C8V0_70.000_80.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YMOEE9uo6MCk_20.000_30.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y1juKQIs5ePc_50.000_60.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YeCAemGkLJxk_150.000_160.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y4nVnNB8op10_80.000_90.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y1MYIYf82ZnM_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y-UFvq4-iS-Y_580.000_590.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Yg_fXHq1Csc4_0.000_10.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y4tPbGCPs-0c_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YSBVvm2xyVLU_380.000_390.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YV0gj0EFXIyk_250.000_260.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YWKrfEFf6C2I_110.000_120.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y1rq1I--vGwo_220.000_230.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YIsKPMBn6irE_12.000_22.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y2nQzeKH07LQ_40.000_50.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YSb0169-lqLs_0.000_9.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y1iYDrXdxkpg_170.000_180.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YGaN-YxlcIA4_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YO5vWaj07zN4_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y21u5DMRvEhs_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y0IMxRf5KZBY_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y-zgGL2o1jqw_80.000_90.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YB_1nw6kapnw_40.000_50.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YvT8a_9ZDMH4_240.000_250.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y27tTKJuekQc_0.000_10.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YqMDpBAs38EA_10.000_20.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y7NyLkxUSPCQ_6.000_16.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YdnBRWaI4E38_20.000_30.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y-2kt5gv42qI_150.000_160.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y2R7p_Ac26mU_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y-Cdx8zogHI0_260.000_270.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YDTyjtZZRKH8_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YLKCyqioKymc_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YVqxBVNBNaLc_160.000_170.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y2yTAfCLLiRs_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YIpqtJmqY4-w_200.000_210.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y077aWlQn6XI_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y1WGfcIOLUK8_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y_eLVrgvrVBQ_20.000_30.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y-9byM5-ih2M_0.000_10.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y3FrK3RhGFGc_10.000_20.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y45vy1dbFAdU_90.000_100.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YOjx9kmtLxU4_40.000_50.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y0-Hzui4Qpl4_40.000_50.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y494nsqffhTE_40.000_50.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y0JKxC7qrgt0_80.000_90.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YI0qvH0g393w_20.000_30.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y4DX3ZWoZbt8_0.000_10.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YPyt8O3N6-wk_110.000_120.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y-rrK6gbh3so_0.000_10.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Yp-DFoKuwjAw_180.000_190.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YVtmm8XY8cko_310.000_320.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y-2RPPODqLy4_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y4U2-ZMKWgD0_380.000_390.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YOEmncpMnPak_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YU0eCWcPP798_0.000_8.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YU5udL6UCigk_100.000_110.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y3JJ700tVT_0_2.000_12.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y50Ophs2Ih-4_120.000_130.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y0dXtmlR1Lm0_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YqqCm76Jtktc_150.000_160.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YZLX7NZF2-KE_340.000_350.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YEbnAmPYcq1U_0.000_10.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YLaaz6hgQ940_110.000_120.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y-fmmdkXn5YA_210.000_220.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y5-AIETMDRaI_10.000_20.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YU7WkuGO-lps_20.000_30.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YxqaMpirSNfI_0.000_10.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YpVgoBDzwHig_3.000_13.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y8mT-l6lcBsk_260.000_270.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y2peFmuYqSDo_60.000_70.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y5MB5gjMb1oo_240.000_250.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YM34hO-PqzpE_50.000_60.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YOpsC1fCg4IU_170.000_180.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y0s6Vt4i3iiQ_40.000_50.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y7X4MOknsB80_0.000_10.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y5X8F5Sthk4Q_80.000_90.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YdN7ZWYBJeUE_40.000_50.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y-TxhuS0jsI4_70.000_80.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YMA2MTloAjr8_10.000_20.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YWzmlUCUX6WM_70.000_80.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Ym5I_M9d80Wg_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y6s7Tv_wqWNE_150.000_160.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y2ZZEtUCIkUw_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YDqCSTZYskfM_140.000_150.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y6-VpJy2Jeec_40.000_50.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y-sPPlSb2CCo_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y6VQuHBq0IXg_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YflwHYHyToU0_180.000_190.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y7-COxzRtOEU_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YIlqOpkmy4C0_11.000_21.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YX-eWpQTv0Yc_210.000_220.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y2QKJuc_Hscc_50.000_60.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y7pxNDwMWoIo_20.000_30.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y7sH5r4U1Nc0_590.000_600.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y7qAvg5uQN9I_200.000_210.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YItfBY9SrWM8_10.000_20.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YRi-tkp3IIic_10.000_20.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YFeXj1i4ur5Q_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y04ISXje8c_g_11.000_21.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y9V-F5sW1vk8_20.000_30.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y-LgxtcD700E_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Ym-zOMNnVX78_40.000_50.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YbVvJzXMLaS8_0.000_10.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YSVyopQxDdHc_560.000_570.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y-BJNMHMZDcU_50.000_60.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YBO6t_yaF-vM_20.000_30.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y5H-b1D1mtk8_10.000_20.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y08pYl8L1y-g_50.000_60.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YJCQHV_YHSEI_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Yk4ExqQTNklk_210.000_220.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YDGbDRGO2qEw_90.000_100.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YlQ2_0IqvH8g_60.000_70.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YG3yk9UXVB9g_20.000_30.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y09RRavdW3C0_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Ygcpwj8O1cYc_200.000_210.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y84uy3xSw9H0_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Yhj_dL9NpsMk_10.000_20.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y0MH_VX7PnQQ_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y-1pPw9zZopA_190.000_200.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y7qempAwNceA_150.000_160.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y3gR0QBgrzYQ_20.000_30.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YI5yMAPfZsBQ_360.000_370.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YkjhwyGWGDkY_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Yt8V4ko2DCfc_22.000_32.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y63xWsWuH-eI_10.000_20.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YTY4tkJAQ1Qg_20.000_30.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YWQ3nvU44-3E_380.000_390.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Yjw7wqfei3Fw_20.000_30.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y9q3P6N22V9M_40.000_50.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y5XYhqCIk15Y_3.000_13.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y86e-ONda0GU_170.000_180.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YskSyu-Q5nZI_0.000_10.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y70CtvdsGQf4_2.000_12.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y1MP3sQTk8wo_0.000_10.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YExPMwoIHO8M_10.000_20.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y1jgxLsJ7XkM_90.000_100.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YAZBIHwmppHo_51.000_61.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YrhhoC11SBi4_0.000_10.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y4P0lThY7Bnk_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YSkPEiTqLlf0_30.000_40.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YOvK__OSdpJQ_74.000_84.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/YCmC62Eg82E8_7.000_17.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Yb8GxUkjLSUY_628.000_638.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y86owBlJa8f0_24.000_34.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Y6OAXLFoBpLY_0.000_10.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+ERROR - data_utils.Desed - File ../dataset/audio/validation/Yxa-lg7S1vns_51.000_61.000.wav is in the tsv file but the feature is not extracted because file do not exist!
+INFO - data_utils.Desed - features created/retrieved in 0.65s, metadata: ../dataset/features/sr16000_win2048_hop255_mels128_nolog/metadata/audio/validation/validation.tsv
+INFO - __main__ - Model loaded at epoch: 199
+INFO - __main__ - CRNN(
+  (cnn): CNN(
+    (cnn): Sequential(
+      (conv0): Conv2d(1, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (batchnorm0): BatchNorm2d(16, eps=0.001, momentum=0.99, affine=True, track_running_stats=True)
+      (glu0): GLU(
+        (sigmoid): Sigmoid()
+        (linear): Linear(in_features=16, out_features=16, bias=True)
+      )
+      (dropout0): Dropout(p=0.5, inplace=False)
+      (pooling0): AvgPool2d(kernel_size=[2, 2], stride=[2, 2], padding=0)
+      (conv1): Conv2d(16, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (batchnorm1): BatchNorm2d(32, eps=0.001, momentum=0.99, affine=True, track_running_stats=True)
+      (glu1): GLU(
+        (sigmoid): Sigmoid()
+        (linear): Linear(in_features=32, out_features=32, bias=True)
+      )
+      (dropout1): Dropout(p=0.5, inplace=False)
+      (pooling1): AvgPool2d(kernel_size=[2, 2], stride=[2, 2], padding=0)
+      (conv2): Conv2d(32, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (batchnorm2): BatchNorm2d(64, eps=0.001, momentum=0.99, affine=True, track_running_stats=True)
+      (glu2): GLU(
+        (sigmoid): Sigmoid()
+        (linear): Linear(in_features=64, out_features=64, bias=True)
+      )
+      (dropout2): Dropout(p=0.5, inplace=False)
+      (pooling2): AvgPool2d(kernel_size=[1, 2], stride=[1, 2], padding=0)
+      (conv3): Conv2d(64, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (batchnorm3): BatchNorm2d(128, eps=0.001, momentum=0.99, affine=True, track_running_stats=True)
+      (glu3): GLU(
+        (sigmoid): Sigmoid()
+        (linear): Linear(in_features=128, out_features=128, bias=True)
+      )
+      (dropout3): Dropout(p=0.5, inplace=False)
+      (pooling3): AvgPool2d(kernel_size=[1, 2], stride=[1, 2], padding=0)
+      (conv4): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (batchnorm4): BatchNorm2d(128, eps=0.001, momentum=0.99, affine=True, track_running_stats=True)
+      (glu4): GLU(
+        (sigmoid): Sigmoid()
+        (linear): Linear(in_features=128, out_features=128, bias=True)
+      )
+      (dropout4): Dropout(p=0.5, inplace=False)
+      (pooling4): AvgPool2d(kernel_size=[1, 2], stride=[1, 2], padding=0)
+      (conv5): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (batchnorm5): BatchNorm2d(128, eps=0.001, momentum=0.99, affine=True, track_running_stats=True)
+      (glu5): GLU(
+        (sigmoid): Sigmoid()
+        (linear): Linear(in_features=128, out_features=128, bias=True)
+      )
+      (dropout5): Dropout(p=0.5, inplace=False)
+      (pooling5): AvgPool2d(kernel_size=[1, 2], stride=[1, 2], padding=0)
+      (conv6): Conv2d(128, 128, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1))
+      (batchnorm6): BatchNorm2d(128, eps=0.001, momentum=0.99, affine=True, track_running_stats=True)
+      (glu6): GLU(
+        (sigmoid): Sigmoid()
+        (linear): Linear(in_features=128, out_features=128, bias=True)
+      )
+      (dropout6): Dropout(p=0.5, inplace=False)
+      (pooling6): AvgPool2d(kernel_size=[1, 2], stride=[1, 2], padding=0)
+    )
+  )
+  (rnn): BidirectionalGRU(
+    (rnn): GRU(128, 128, num_layers=2, batch_first=True, bidirectional=True)
+  )
+  (dropout): Dropout(p=0.5, inplace=False)
+  (dense): Linear(in_features=256, out_features=10, bias=True)
+  (sigmoid): Sigmoid()
+  (dense_softmax): Linear(in_features=256, out_features=10, bias=True)
+  (softmax): Softmax(dim=-1)
+)
+INFO - evaluation_measures - Event based metrics (onset-offset)
+========================================
+  Evaluated length                  : 10459.12 sec
+  Evaluated files                   : 1168 
+  Evaluate onset                    : True 
+  Evaluate offset                   : True 
+  T collar                          : 200.00 ms
+  Offset (length)                   : 20.00 %
+
+  Overall metrics (micro-average)
+  ======================================
+  F-measure
+    F-measure (F1)                  : 26.36 %
+    Precision                       : 35.45 %
+    Recall                          : 20.98 %
+  Error rate
+    Error rate (ER)                 : 1.16 
+    Substitution rate               : 0.01 
+    Deletion rate                   : 0.78 
+    Insertion rate                  : 0.37 
+
+  Class-wise average metrics (macro-average)
+  ======================================
+  F-measure
+    F-measure (F1)                  : 23.21 %
+    Precision                       : 26.26 %
+    Recall                          : 23.49 %
+  Error rate
+    Error rate (ER)                 : 1.38 
+    Deletion rate                   : 0.77 
+    Insertion rate                  : 0.62 
+  
+
+  Class-wise metrics
+  ======================================
+    Event label  | Nref    Nsys  | F        Pre      Rec    | ER       Del      Ins    |
+    ------------ | -----   ----- | ------   ------   ------ | ------   ------   ------ |
+    Blender      | 94      159   | 31.6%    25.2%    42.6%  | 1.84     0.57     1.27   |
+    Vacuum_cle.. | 92      143   | 31.5%    25.9%    40.2%  | 1.75     0.60     1.15   |
+    Speech       | 1752    1153  | 38.9%    49.0%    32.2%  | 1.01     0.68     0.34   |
+    Electric_s.. | 65      43    | 33.3%    41.9%    27.7%  | 1.11     0.72     0.38   |
+    Dishes       | 559     123   | 2.1%     5.7%     1.3%   | 1.19     0.99     0.21   |
+    Running_wa.. | 237     140   | 22.3%    30.0%    17.7%  | 1.24     0.82     0.41   |
+    Cat          | 341     272   | 30.7%    34.6%    27.6%  | 1.25     0.72     0.52   |
+    Alarm_bell.. | 420     177   | 14.4%    24.3%    10.2%  | 1.22     0.90     0.32   |
+    Dog          | 570     128   | 2.3%     6.2%     1.4%   | 1.20     0.99     0.21   |
+    Frying       | 94      161   | 25.1%    19.9%    34.0%  | 2.03     0.66     1.37   |
+
+
+INFO - evaluation_measures - Segment based metrics
+========================================
+  Evaluated length                  : 11022.68 sec
+  Evaluated files                   : 1168 
+  Segment length                    : 1.00 sec
+
+  Overall metrics (micro-average)
+  ======================================
+  F-measure
+    F-measure (F1)                  : 61.97 %
+    Precision                       : 77.82 %
+    Recall                          : 51.48 %
+  Error rate
+    Error rate (ER)                 : 0.56 
+    Substitution rate               : 0.07 
+    Deletion rate                   : 0.42 
+    Insertion rate                  : 0.08 
+  Accuracy
+    Sensitivity                     : 51.48 %
+    Specificity                     : 98.32 %
+    Balanced accuracy               : 74.90 %
+    Accuracy                        : 93.52 %
+
+  Class-wise average metrics (macro-average)
+  ======================================
+  F-measure
+    F-measure (F1)                  : 52.32 %
+    Precision                       : 69.16 %
+    Recall                          : 45.94 %
+  Error rate
+    Error rate (ER)                 : 0.74 
+    Deletion rate                   : 0.54 
+    Insertion rate                  : 0.20 
+  Accuracy
+    Sensitivity                     : 45.94 %
+    Specificity                     : 98.29 %
+    Balanced accuracy               : 72.12 %
+    Accuracy                        : 93.52 %
+  
+
+  Class-wise metrics
+  ======================================
+    Event label  | Nref    Nsys  | F        Pre      Rec    | ER       Del      Ins    | Sens     Spec     Bacc     Acc     
+    ------------ | -----   ----- | ------   ------   ------ | ------   ------   ------ | ------   ------   ------   ------  
+    Blender      | 538     566   | 59.8%    58.3%    61.3%  | 0.83     0.39     0.44   | 61.3%    97.8%    79.6%    96.0%   
+    Vacuum_cle.. | 801     868   | 65.2%    62.7%    67.9%  | 0.73     0.32     0.40   | 67.9%    96.9%    82.4%    94.8%   
+    Speech       | 3745    2930  | 81.0%    92.3%    72.2%  | 0.34     0.28     0.06   | 72.2%    96.9%    84.6%    88.6%   
+    Electric_s.. | 522     236   | 55.7%    89.4%    40.4%  | 0.64     0.60     0.05   | 40.4%    99.8%    70.1%    97.0%   
+    Dishes       | 754     188   | 13.6%    34.0%    8.5%   | 1.08     0.92     0.16   | 8.5%     98.8%    53.6%    92.7%   
+    Running_wa.. | 1385    590   | 52.6%    88.0%    37.5%  | 0.68     0.63     0.05   | 37.5%    99.3%    68.4%    91.6%   
+    Cat          | 728     423   | 56.6%    77.1%    44.8%  | 0.69     0.55     0.13   | 44.8%    99.1%    71.9%    95.5%   
+    Alarm_bell.. | 1060    795   | 75.5%    88.1%    66.0%  | 0.43     0.34     0.09   | 66.0%    99.1%    82.5%    95.9%   
+    Dog          | 1131    128   | 10.3%    50.8%    5.7%   | 1.00     0.94     0.06   | 5.7%     99.4%    52.6%    89.9%   
+    Frying       | 794     856   | 53.0%    51.1%    55.0%  | 0.98     0.45     0.53   | 55.0%    96.0%    75.5%    93.1%   
+
+
+INFO - evaluation_measures - F1_score (psds_eval) accounting cross triggers: 0.43934020969854204
+INFO - evaluation_measures - 
+PSD-Score (0, 0, 100): 0.41583
+INFO - evaluation_measures - 
+PSD-Score (1, 0, 100): 0.35164
+INFO - evaluation_measures - 
+PSD-Score (0, 1, 100): 0.19568
