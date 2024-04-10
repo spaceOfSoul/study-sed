@@ -223,7 +223,7 @@ if __name__ == '__main__':
     else:
         add_dir_model_name = "_with_synthetic"
 
-    store_dir = os.path.join("stored_data", "MeanTeacher" + add_dir_model_name)
+    store_dir = os.path.join("stored_data", "default_but_convlayer_add" + add_dir_model_name)
     saved_model_dir = os.path.join(store_dir, "model")
     saved_pred_dir = os.path.join(store_dir, "predictions")
     os.makedirs(store_dir, exist_ok=True)
