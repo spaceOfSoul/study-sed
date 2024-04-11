@@ -33,7 +33,7 @@ class ContextGating(nn.Module):
 class CNN(nn.Module):
 
     def __init__(self, n_in_channel, activation="Relu", conv_dropout=0,
-                 kernel_size=[3, 3, 33,3], padding=[1, 1, 1,1,1], stride=[1, 1, 1,1,1], nb_filters=[64, 64, 64,64,128],
+                 kernel_size=[2, 2, 2, 3,3,3], padding=[1, 1, 1,1,1,1], stride=[1, 1, 1,1,1,1], nb_filters=[64, 64, 64,64,64,64],
                  pooling=[(1, 4), (1, 4), (1, 4)]
                  ):
         super(CNN, self).__init__()
