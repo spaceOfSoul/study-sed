@@ -26,6 +26,8 @@ class CRNN(nn.Module):
         self.train_cnn = train_cnn
         if rnn_type == 'BGRU':
             nb_in = self.cnn.nb_filters[-1]
+            #nb_in = 8192 # hard coding for resnet50 test
+
             if self.cnn_integration:
                 # self.fc = nn.Linear(nb_in * n_in_channel, nb_in)
                 nb_in = nb_in * n_in_channel
@@ -69,6 +71,7 @@ class CRNN(nn.Module):
 
         # conv features
         x = self.cnn(x)
+
         bs, chan, frames, freq = x.size()
         if self.cnn_integration:
             x = x.reshape(bs_in, chan * nc_in, frames, freq)

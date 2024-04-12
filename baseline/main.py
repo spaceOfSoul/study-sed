@@ -240,8 +240,9 @@ if __name__ == '__main__':
                    "activation": "glu",
                    "dropout": 0.5,
                    "kernel_size": n_layers * [3], "padding": n_layers * [1], "stride": n_layers * [1],
-                   "nb_filters": [16,  32,  64,  128,  128, 128, 128],
+                   "nb_filters": [16,  32,  64,  64,  64, 128, 128],
                    "pooling": [[2, 2], [2, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2]]}
+                #   "pooling": [[4,128]]}
     pooling_time_ratio = 4  # 2 * 2
 
     out_nb_frames_1s = cfg.sample_rate / cfg.hop_size / pooling_time_ratio

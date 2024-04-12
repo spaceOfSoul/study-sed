@@ -46,7 +46,8 @@ def weights_init(m):
     classname = m.__class__.__name__
     if classname.find('Conv2d') != -1:
         nn.init.xavier_uniform_(m.weight, gain=np.sqrt(2))
-        m.bias.data.fill_(0)
+        if m.bias is not None:  # if bias is exsist
+            m.bias.data.fill_(0)
     elif classname.find('BatchNorm') != -1:
         m.weight.data.normal_(1.0, 0.02)
         m.bias.data.fill_(0)
@@ -56,8 +57,8 @@ def weights_init(m):
                 nn.init.orthogonal_(weight.data)
     elif classname.find('Linear') != -1:
         m.weight.data.normal_(0, 0.01)
-        m.bias.data.zero_()
-
+        if m.bias is not None:  # if bias is exsist
+            m.bias.data.fill_(0)
 
 def to_cuda_if_available(*args):
     """ Transfer object (Module, Tensor) to GPU if GPU available
