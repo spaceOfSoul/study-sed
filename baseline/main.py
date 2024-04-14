@@ -71,6 +71,7 @@ def train(train_loader, model, optimizer, c_epoch, ema_model=None, mask_weak=Non
         adjust_lr: bool, Whether or not to adjust the learning rate during training (params in config)
     """
     log = create_logger(__name__ + "/" + inspect.currentframe().f_code.co_name, terminal_level=cfg.terminal_level)
+
     class_criterion = nn.BCELoss()
     consistency_criterion = nn.MSELoss()
     class_criterion, consistency_criterion = to_cuda_if_available(class_criterion, consistency_criterion)
@@ -212,6 +213,8 @@ if __name__ == '__main__':
 
     parser.add_argument("-n", '--no_synthetic', dest='no_synthetic', action='store_true', default=False,
                         help="Not using synthetic labels during training")
+    parser.add_argument("-dir", '--store_dir', dest='store_dir',
+                        help="Directory where the files will be stored.")
     f_args = parser.parse_args()
     pprint(vars(f_args))
 
@@ -223,7 +226,7 @@ if __name__ == '__main__':
     else:
         add_dir_model_name = "_with_synthetic"
 
-    store_dir = os.path.join("stored_data", "default_but_convlayer_add" + add_dir_model_name)
+    store_dir = f_args.store_dir + add_dir_model_name
     saved_model_dir = os.path.join(store_dir, "model")
     saved_pred_dir = os.path.join(store_dir, "predictions")
     os.makedirs(store_dir, exist_ok=True)
@@ -240,13 +243,13 @@ if __name__ == '__main__':
                    "activation": "glu",
                    "dropout": 0.5,
                    "kernel_size": n_layers * [3], "padding": n_layers * [1], "stride": n_layers * [1],
-                   "nb_filters": [16,  32,  64,  64,  64, 128, 128],
+                   "nb_filters": [16,  32,  64,  128,  128, 128, 128],
                    "pooling": [[2, 2], [2, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2]]}
-                #   "pooling": [[4,128]]}
     pooling_time_ratio = 4  # 2 * 2
 
     out_nb_frames_1s = cfg.sample_rate / cfg.hop_size / pooling_time_ratio
     median_window = max(int(cfg.median_window_s * out_nb_frames_1s), 1)
+    print(median_window)
     logger.debug(f"median_window: {median_window}")
     # ##############
     # DATA

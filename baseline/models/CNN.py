@@ -33,7 +33,7 @@ class ContextGating(nn.Module):
 class CNN(nn.Module):
 
     def __init__(self, n_in_channel, activation="Relu", conv_dropout=0,
-                 kernel_size=[2, 2, 2, 3,3,3], padding=[1, 1, 1,1,1,1], stride=[1, 1, 1,1,1,1], nb_filters=[64, 64, 64,64,64,64],
+                 kernel_size=[3, 3, 3], padding=[1, 1, 1], stride=[1, 1, 1], nb_filters=[64, 64, 64],
                  pooling=[(1, 4), (1, 4), (1, 4)]
                  ):
         super(CNN, self).__init__()
@@ -66,10 +66,6 @@ class CNN(nn.Module):
             conv(i, batch_norm, conv_dropout, activ=activation)
             cnn.add_module('pooling{0}'.format(i), nn.AvgPool2d(pooling[i]))  # bs x tframe x mels
 
-        # pooling is done all at once,occur  PYTORCH_CUDA_ALLOC_CONF
-        #for i in range(len(pooling)):
-        #    cnn.add_module('pooling{0}'.format(i), nn.AvgPool2d(pooling[i]))  # bs x tframe x mels
-
         self.cnn = cnn
 
     def load_state_dict(self, state_dict, strict=True):
@@ -86,37 +82,3 @@ class CNN(nn.Module):
         # conv features
         x = self.cnn(x)
         return x
-
-
-##################3
-# resnet 50
-##################
-import torchvision.models as models
-
-#class CNN(nn.Module):
-#    def __init__(self, n_in_channel, activation="Relu", conv_dropout=0, 
-#                 kernel_size=[2, 2, 2, 3, 3, 3], padding=[1, 1, 1, 1, 1, 1], 
-#                 stride=[1, 1, 1, 1, 1, 1], nb_filters=[64, 64, 64, 64, 64, 64], 
-#                 pooling=[(1, 4), (1, 4), (1, 4)]):
-#        super(CNN, self).__init__()
-
-#        self.resnet = models.resnet50(pretrained=True)
-#        self.resnet.conv1 = nn.Conv2d(n_in_channel, 64, kernel_size=7, stride=2, padding=3, bias=False)
-
-#        self.resnet = nn.Sequential(*list(self.resnet.children())[:-2])
-
-#        self.cnn = nn.Sequential(self.resnet)
-
-#    def forward(self, x):
-#        # ResNet-50을 통과
-#        x = self.resnet(x)
-#        return x
-    
-#    def load_state_dict(self, state_dict, strict=True):
-#        self.cnn.load_state_dict(state_dict)
-
-#    def state_dict(self, destination=None, prefix='', keep_vars=False):
-#        return self.cnn.state_dict(destination=destination, prefix=prefix, keep_vars=keep_vars)
-
-#    def save(self, filename):
-#        torch.save(self.cnn.state_dict(), filename)
