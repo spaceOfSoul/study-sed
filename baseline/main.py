@@ -27,6 +27,9 @@ from utilities.utils import SaveBest, to_cuda_if_available, weights_init, Averag
 from utilities.ManyHotEncoder import ManyHotEncoder
 from utilities.Transforms import get_transforms
 
+from discord_Notifier import DiscordNotifier
+import os
+from dotenv import load_dotenv
 
 def adjust_learning_rate(optimizer, rampup_value, rampdown_value=1):
     """ adjust the learning rate
@@ -434,4 +437,11 @@ if __name__ == '__main__':
                                      pooling_time_ratio, thresholds=list_thresholds, median_window=median_window,
                                      save_predictions=predicitons_fname)
     psds = compute_psds_from_operating_points(pred_ss_thresh, validation_labels_df, durations_validation)
+    
+    load_dotenv()
+    TOKEN = os.getenv('DISCORD_TOKEN')
+    USER_ID = os.getenv('USER_ID')
+    notifier = DiscordNotifier(TOKEN,USER_ID, f'Learning complete! \n{state['valid_metric']}')
+    notifier.client.run(TOKEN)
+    
     psds_score(psds, filename_roc_curves=os.path.join(saved_pred_dir, "figures/psds_roc.png"))

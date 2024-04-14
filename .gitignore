@@ -37,3 +37,5 @@ baseline/logs
 
 # Model files
 **/fuss_desed_baseline_dry_2_model/
+
+.env
