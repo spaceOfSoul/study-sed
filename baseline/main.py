@@ -21,6 +21,7 @@ from models.CRNN import CRNN
 import config as cfg
 from utilities import ramps
 from utilities.Logger import create_logger
+from utilities.tee import Tee
 from utilities.Scaler import ScalerPerAudio, Scaler
 from utilities.utils import SaveBest, to_cuda_if_available, weights_init, AverageMeterSet, EarlyStopping, \
     get_durations_df
@@ -218,6 +219,8 @@ if __name__ == '__main__':
                         help="Not using synthetic labels during training")
     parser.add_argument("-dir", '--store_dir', dest='store_dir',
                         help="Directory where the files will be stored.")
+    parser.add_argument("-m", "--model", dest="model_conf", default=CRNN)
+    
     f_args = parser.parse_args()
     pprint(vars(f_args))
 
@@ -235,6 +238,7 @@ if __name__ == '__main__':
     os.makedirs(store_dir, exist_ok=True)
     os.makedirs(saved_model_dir, exist_ok=True)
     os.makedirs(saved_pred_dir, exist_ok=True)
+    tee = Tee(f"{store_dir}/output_log.txt")
 
     n_channel = 1
     add_axis_conv = 0
