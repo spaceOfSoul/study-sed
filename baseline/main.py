@@ -247,7 +247,10 @@ if __name__ == '__main__':
                    "dropout": 0.5,
                    "kernel_size": n_layers * [3], "padding": n_layers * [1], "stride": n_layers * [1],
                    "nb_filters": [16,  32,  64,  128,  128, 128, 128],
-                   "pooling": [[2, 2], [2, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2]]}
+                #   "pooling": [[2, 2], [2, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2]] # cnn-rnn
+                    "pooling": [[1, 2], [1, 2], [1, 2], [1, 2], [1, 2]] # cnn-rnn
+
+                }
     pooling_time_ratio = 4  # 2 * 2
 
     out_nb_frames_1s = cfg.sample_rate / cfg.hop_size / pooling_time_ratio
@@ -424,7 +427,7 @@ if __name__ == '__main__':
     valid_predictions = get_predictions(crnn, validation_dataloader, many_hot_encoder.decode_strong,
                                         pooling_time_ratio, median_window=median_window,
                                         save_predictions=predicitons_fname)
-    compute_metrics(valid_predictions, validation_labels_df, durations_validation)
+    valid_synth_f1, psds_m_f1=compute_metrics(valid_predictions, validation_labels_df, durations_validation)
 
     # ##########
     # Optional but recommended
@@ -441,7 +444,7 @@ if __name__ == '__main__':
     load_dotenv()
     TOKEN = os.getenv('DISCORD_TOKEN')
     USER_ID = os.getenv('USER_ID')
-    notifier = DiscordNotifier(TOKEN,USER_ID, f'Learning complete! \n{state['valid_metric']}')
+    notifier = DiscordNotifier(TOKEN,USER_ID, f"`{time.strftime('%Y-%m-%d', time.localtime(time.time()))}` : Learning complete!```\nvalid_synth_f1 : {valid_synth_f1}\n```")
     notifier.client.run(TOKEN)
     
     psds_score(psds, filename_roc_curves=os.path.join(saved_pred_dir, "figures/psds_roc.png"))

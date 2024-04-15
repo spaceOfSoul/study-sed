@@ -4,7 +4,7 @@ import torch.nn as nn
 import torch
 
 from models.RNN import BidirectionalGRU
-from models.CNN import CNN
+from models.CNN import CNN, Resnet
 
 
 class CRNN(nn.Module):
@@ -19,14 +19,15 @@ class CRNN(nn.Module):
         n_in_cnn = n_in_channel
         if cnn_integration:
             n_in_cnn = 1
-        self.cnn = CNN(n_in_cnn, activation, dropout, **kwargs)
+        #self.cnn = CNN(n_in_cnn, activation, dropout, **kwargs)
+        self.cnn = Resnet(n_in_cnn, activation, dropout, **kwargs)
+
         if not train_cnn:
             for param in self.cnn.parameters():
                 param.requires_grad = False
         self.train_cnn = train_cnn
         if rnn_type == 'BGRU':
             nb_in = self.cnn.nb_filters[-1]
-            #nb_in = 8192 # hard coding for resnet50 test
 
             if self.cnn_integration:
                 # self.fc = nn.Linear(nb_in * n_in_channel, nb_in)
@@ -54,9 +55,11 @@ class CRNN(nn.Module):
         self.dense.load_state_dict(state_dict["dense"])
 
     def state_dict(self, destination=None, prefix='', keep_vars=False):
-        state_dict = {"cnn": self.cnn.state_dict(destination=destination, prefix=prefix, keep_vars=keep_vars),
-                      "rnn": self.rnn.state_dict(destination=destination, prefix=prefix, keep_vars=keep_vars),
-                      'dense': self.dense.state_dict(destination=destination, prefix=prefix, keep_vars=keep_vars)}
+        state_dict = {
+            "cnn": self.cnn.state_dict(destination=destination, prefix=prefix, keep_vars=keep_vars),
+            "rnn": self.rnn.state_dict(destination=destination, prefix=prefix, keep_vars=keep_vars),
+            'dense': self.dense.state_dict(destination=destination, prefix=prefix, keep_vars=keep_vars)
+        }
         return state_dict
 
     def save(self, filename):
@@ -69,8 +72,10 @@ class CRNN(nn.Module):
             bs_in, nc_in = x.size(0), x.size(1)
             x = x.view(bs_in * nc_in, 1, *x.shape[2:])
 
+        print(f"before cnn : {x.shape}")
         # conv features
         x = self.cnn(x)
+        print(f"after cnn : {x.shape}")
 
         bs, chan, frames, freq = x.size()
         if self.cnn_integration:
@@ -83,6 +88,8 @@ class CRNN(nn.Module):
         else:
             x = x.squeeze(-1)
             x = x.permute(0, 2, 1)  # [bs, frames, chan]
+        
+        print(f"beforre rnn : {x.shape}")
 
         # rnn features
         x = self.rnn(x)
