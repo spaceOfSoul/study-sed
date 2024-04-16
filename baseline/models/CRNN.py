@@ -19,8 +19,8 @@ class CRNN(nn.Module):
         n_in_cnn = n_in_channel
         if cnn_integration:
             n_in_cnn = 1
-        #self.cnn = CNN(n_in_cnn, activation, dropout, **kwargs)
-        self.cnn = Resnet(n_in_cnn, activation, dropout, **kwargs)
+        self.cnn = CNN(n_in_cnn, activation, dropout, **kwargs)
+        #self.cnn = Resnet(n_in_cnn, activation, dropout, **kwargs)
 
         if not train_cnn:
             for param in self.cnn.parameters():
@@ -72,10 +72,10 @@ class CRNN(nn.Module):
             bs_in, nc_in = x.size(0), x.size(1)
             x = x.view(bs_in * nc_in, 1, *x.shape[2:])
 
-        print(f"before cnn : {x.shape}")
+        #print(f"before cnn : {x.shape}")
         # conv features
         x = self.cnn(x)
-        print(f"after cnn : {x.shape}")
+        #print(f"after cnn : {x.shape}")
 
         bs, chan, frames, freq = x.size()
         if self.cnn_integration:

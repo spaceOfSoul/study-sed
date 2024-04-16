@@ -28,7 +28,7 @@ from utilities.utils import SaveBest, to_cuda_if_available, weights_init, Averag
 from utilities.ManyHotEncoder import ManyHotEncoder
 from utilities.Transforms import get_transforms
 
-from discord_Notifier import DiscordNotifier
+from utilities.discord_Notifier import DiscordNotifier
 import os
 from dotenv import load_dotenv
 
@@ -251,8 +251,8 @@ if __name__ == '__main__':
                    "dropout": 0.5,
                    "kernel_size": n_layers * [3], "padding": n_layers * [1], "stride": n_layers * [1],
                    "nb_filters": [16,  32,  64,  128,  128, 128, 128],
-                #   "pooling": [[2, 2], [2, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2]] # cnn-rnn
-                    "pooling": [[1, 2], [1, 2], [1, 2], [1, 2], [1, 2]] # cnn-rnn
+                   "pooling": [[2, 2], [2, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2]] # cnn-rnn
+                    #"pooling": [[1, 2], [1, 2], [1, 2], [1, 2], [1, 2]] # cnn-rnn
 
                 }
     pooling_time_ratio = 4  # 2 * 2
