@@ -21,7 +21,7 @@ from models.CRNN import CRNN
 import config as cfg
 from utilities import ramps
 from utilities.Logger import create_logger
-from utilities.tee import Tee
+#from utilities.tee import Tee
 from utilities.Scaler import ScalerPerAudio, Scaler
 from utilities.utils import SaveBest, to_cuda_if_available, weights_init, AverageMeterSet, EarlyStopping, \
     get_durations_df
@@ -238,7 +238,7 @@ if __name__ == '__main__':
     os.makedirs(store_dir, exist_ok=True)
     os.makedirs(saved_model_dir, exist_ok=True)
     os.makedirs(saved_pred_dir, exist_ok=True)
-    tee = Tee(f"{store_dir}/output_log.txt")
+    #tee = Tee(f"{store_dir}/output_log.txt")
 
     n_channel = 1
     add_axis_conv = 0
@@ -251,9 +251,9 @@ if __name__ == '__main__':
                    "dropout": 0.5,
                    "kernel_size": n_layers * [3], "padding": n_layers * [1], "stride": n_layers * [1],
                    "nb_filters": [16,  32,  64,  128,  128, 128, 128],
-                   "pooling": [[2, 2], [2, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2]] # cnn-rnn
+                   "pooling": [[2, 2], [2, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2]], # cnn-rnn
                     #"pooling": [[1, 2], [1, 2], [1, 2], [1, 2], [1, 2]] # cnn-rnn
-
+                    "rnn_type":"BGRU"
                 }
     pooling_time_ratio = 4  # 2 * 2
 

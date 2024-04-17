@@ -162,7 +162,7 @@ def get_predictions(model, dataloader, decoder, pooling_time_ratio=1, thresholds
                 pred.loc[:, ["onset", "offset"]] = pred[["onset", "offset"]].clip(0, cfg.max_len_seconds)
 
                 pred["filename"] = dataloader.dataset.filenames.iloc[indexes[j]]
-                prediction_dfs[threshold] = prediction_dfs[threshold].append(pred, ignore_index=True)
+                prediction_dfs[threshold] = pd.concat([prediction_dfs[threshold], pred], ignore_index=True)
 
                 if i == 0 and j == 0:
                     logger.debug("predictions: \n{}".format(pred))

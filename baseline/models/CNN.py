@@ -39,7 +39,7 @@ class CNN(nn.Module):
         super(CNN, self).__init__()
         self.nb_filters = nb_filters
         cnn = nn.Sequential()
-
+        self.poolings = nn.Sequential()
         def conv(i, batchNormalization=False, dropout=None, activ="relu"):
             nIn = n_in_channel if i == 0 else nb_filters[i - 1]
             nOut = nb_filters[i]
@@ -64,7 +64,8 @@ class CNN(nn.Module):
         # 128x862x64
         for i in range(len(nb_filters)):
             conv(i, batch_norm, conv_dropout, activ=activation)
-            cnn.add_module('pooling{0}'.format(i), nn.AvgPool2d(pooling[i]))  # bs x tframe x mels
+        for i in range(len(pooling)):
+            self.poolings.add_module('pooling{0}'.format(i), nn.AvgPool2d(pooling[i]))  # bs x tframe x mels
 
         self.cnn = cnn
 
@@ -81,6 +82,7 @@ class CNN(nn.Module):
         # input size : (batch_size, n_channels, n_frames, n_freq)
         # conv features
         x = self.cnn(x)
+        x = self.poolings(x)
         return x
 
 class Resnet(nn.Module):
