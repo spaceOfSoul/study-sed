@@ -3,6 +3,16 @@ import warnings
 import torch
 from torch import nn as nn
 
+class BidirectionalRNN(nn.Module):
+    
+    def __init__(self, n_in, n_hidden, dropout=0, num_layers=1):
+        super(BidirectionalRNN, self).__init__()
+
+        self.rnn = nn.RNN(n_in, n_hidden, bidirectional=True, dropout=dropout, batch_first=True, num_layers=num_layers)
+
+    def forward(self, input_feat):
+        recurrent, _ = self.rnn(input_feat)
+        return recurrent
 
 class BidirectionalGRU(nn.Module):
 
@@ -18,11 +28,11 @@ class BidirectionalGRU(nn.Module):
 
 class BidirectionalLSTM(nn.Module):
 
-    def __init__(self, nIn, nHidden, nOut, dropout=0, num_layers=1):
+    def __init__(self, nIn, nHidden, dropout=0, num_layers=1):
         super(BidirectionalLSTM, self).__init__()
-        self.rnn = nn.LSTM(nIn, nHidden // 2, bidirectional=True, batch_first=True,
+        self.rnn = nn.LSTM(nIn, nHidden, bidirectional=True, batch_first=True,
                            dropout=dropout, num_layers=num_layers)
-        self.embedding = nn.Linear(nHidden * 2, nOut)
+        #self.embedding = nn.Linear(nHidden * 2, nOut)
 
     def save(self, filename):
         torch.save(self.state_dict(), filename)
@@ -37,9 +47,9 @@ class BidirectionalLSTM(nn.Module):
 
     def forward(self, input_feat):
         recurrent, _ = self.rnn(input_feat)
-        b, T, h = recurrent.size()
-        t_rec = recurrent.contiguous().view(b * T, h)
+        #b, T, h = recurrent.size()
+        #t_rec = recurrent.contiguous().view(b * T, h)
 
-        output = self.embedding(t_rec)  # [T * b, nOut]
-        output = output.view(b, T, -1)
-        return output
+        #output = self.embedding(t_rec)  # [T * b, nOut]
+        #output = output.view(b, T, -1)
+        return recurrent

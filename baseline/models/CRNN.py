@@ -3,7 +3,7 @@ import warnings
 import torch.nn as nn
 import torch
 
-from models.RNN import BidirectionalGRU, BidirectionalLSTM
+from models.RNN import BidirectionalGRU, BidirectionalLSTM, BidirectionalRNN
 from models.CNN import CNN, Resnet
 
 
@@ -41,6 +41,14 @@ class CRNN(nn.Module):
                 # self.fc = nn.Linear(nb_in * n_in_channel, nb_in)
                 nb_in = nb_in * n_in_channel
             self.rnn = BidirectionalLSTM(nb_in,
+                                        n_RNN_cell, dropout=dropout_recurrent, num_layers=n_layers_RNN)
+        elif rnn_type == 'BRNN':
+            nb_in = self.cnn.nb_filters[-1]
+
+            if self.cnn_integration:
+                # self.fc = nn.Linear(nb_in * n_in_channel, nb_in)
+                nb_in = nb_in * n_in_channel
+            self.rnn = BidirectionalRNN(nb_in,
                                         n_RNN_cell, dropout=dropout_recurrent, num_layers=n_layers_RNN)
         else:
             NotImplementedError("Only BGRU supported for CRNN for now")

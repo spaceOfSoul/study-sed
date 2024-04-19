@@ -248,7 +248,7 @@ if __name__ == '__main__':
     # Model taken from 2nd of dcase19 challenge: see Delphin-Poulat2019 in the results.
     n_layers = 7
     crnn_kwargs = {"n_in_channel": n_channel, "nclass": len(cfg.classes), "attention": True, "n_RNN_cell": 128,
-                   "n_layers_RNN": 2,
+                   "n_layers_RNN": 4,
                    "activation": "glu",
                    "dropout": 0.5,
                    "kernel_size": n_layers * [3], "padding": n_layers * [1], "stride": n_layers * [1],
@@ -256,6 +256,8 @@ if __name__ == '__main__':
                    "pooling": [[2, 2], [2, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2]], # cnn-rnn
                     #"pooling": [[1, 2], [1, 2], [1, 2], [1, 2], [1, 2]] # cnn-rnn
                     "rnn_type":"BGRU"
+                    #"rnn_type":"BRNN"
+                    #"rnn_type":"BLSTM"
                 }
     pooling_time_ratio = 4  # 2 * 2
 
@@ -450,7 +452,7 @@ if __name__ == '__main__':
     load_dotenv()
     TOKEN = os.getenv('DISCORD_TOKEN')
     USER_ID = os.getenv('USER_ID')
-    notifier = DiscordNotifier(TOKEN,USER_ID, f"`{time.strftime('%Y-%m-%d', time.localtime(time.time()))}` : Learning complete!```\nvalid_synth_f1 : {valid_synth_f1}\n```")
+    notifier = DiscordNotifier(TOKEN,USER_ID, f"`{time.strftime('%Y-%m-%d', time.localtime(time.time()))}` :`{store_dir}`  Train complete!```\nvalid_synth_f1 : {valid_synth_f1}\n```")
     notifier.client.run(TOKEN)
     
     psds_score(psds, filename_roc_curves=os.path.join(saved_pred_dir, "figures/psds_roc.png"))
