@@ -32,6 +32,8 @@ from utilities.discord_Notifier import DiscordNotifier
 import os
 from dotenv import load_dotenv
 
+pd.options.mode.chained_assignment = None
+
 def adjust_learning_rate(optimizer, rampup_value, rampdown_value=1):
     """ adjust the learning rate
     Args:
@@ -365,7 +367,7 @@ if __name__ == '__main__':
     results = pd.DataFrame(columns=["loss", "valid_synth_f1", "weak_metric", "global_valid"])
     for epoch in range(cfg.n_epoch):
         crnn.train()
-        crnn_ema.train()
+        crnn_ema.train() 
         crnn, crnn_ema = to_cuda_if_available(crnn, crnn_ema)
 
         loss_value = train(training_loader, crnn, optim, epoch,
