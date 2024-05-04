@@ -248,13 +248,23 @@ if __name__ == '__main__':
     # Model taken from 2nd of dcase19 challenge: see Delphin-Poulat2019 in the results.
     n_layers = 7
     crnn_kwargs = {"n_in_channel": n_channel, "nclass": len(cfg.classes), "attention": True, "n_RNN_cell": 128,
-                   "n_layers_RNN": 4,
+                   "n_layers_RNN": 2,
+
                    "activation": "glu",
+
                    "dropout": 0.5,
                    "kernel_size": n_layers * [3], "padding": n_layers * [1], "stride": n_layers * [1],
-                   "nb_filters": [16,  32,  64,  128,  128, 128, 128],
-                   "pooling": [[2, 2], [2, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2]], # cnn-rnn
+
+                   "nb_filters": [16,  32,  64,  128,  128, 256, 256],
+                   "pooling": [[2, 2], [2, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2]],# cnn-rnn
                     #"pooling": [[1, 2], [1, 2], [1, 2], [1, 2], [1, 2]] # cnn-rnn
+
+                    "poolingFunc":"avg",
+                    #"poolingFunc":"max",
+
+                    "cnn_type":"CNN",
+                    #"cnn_type":"ResNet",
+
                     "rnn_type":"BGRU"
                     #"rnn_type":"BRNN"
                     #"rnn_type":"BLSTM"

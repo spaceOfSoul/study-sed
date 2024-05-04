@@ -10,8 +10,8 @@ from models.CNN import CNN, Resnet
 class CRNN(nn.Module):
 
     def __init__(self, n_in_channel, nclass, attention=False, activation="Relu", dropout=0,
-                 train_cnn=True, rnn_type='BGRU', n_RNN_cell=64, n_layers_RNN=1, dropout_recurrent=0,
-                 cnn_integration=False, **kwargs):
+                 train_cnn=True, cnn_type='CNN', rnn_type='BGRU', n_RNN_cell=64, n_layers_RNN=1, dropout_recurrent=0,
+                 cnn_integration=False,poolingFunc="avg", **kwargs):
         super(CRNN, self).__init__()
         self.n_in_channel = n_in_channel
         self.attention = attention
@@ -19,8 +19,10 @@ class CRNN(nn.Module):
         n_in_cnn = n_in_channel
         if cnn_integration:
             n_in_cnn = 1
-        self.cnn = CNN(n_in_cnn, activation, dropout, **kwargs)
-        #self.cnn = Resnet(n_in_cnn, activation, dropout, **kwargs)
+        if cnn_type == "CNN":
+            self.cnn = CNN(n_in_cnn, activation, dropout, **kwargs)
+        elif cnn_type == "ResNet":
+            self.cnn = Resnet(n_in_cnn, activation, dropout, **kwargs)
 
         if not train_cnn:
             for param in self.cnn.parameters():

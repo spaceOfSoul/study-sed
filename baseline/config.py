@@ -43,7 +43,7 @@ max_consistency_cost = 2
 in_memory = True
 in_memory_unlab = False
 num_workers = 8
-batch_size = 12
+batch_size = 24
 noise_snr = 30
 
 n_epoch = 200
@@ -58,7 +58,7 @@ max_learning_rate = 0.001  # Used if adjust_lr is True
 default_learning_rate = 0.001  # Used if adjust_lr is False
 
 # Post processing
-median_window_s = 0.45
+median_window_s = 0.5
 
 # Classes
 file_path = os.path.abspath(os.path.dirname(__file__))

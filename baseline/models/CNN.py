@@ -34,7 +34,7 @@ class CNN(nn.Module):
 
     def __init__(self, n_in_channel, activation="Relu", conv_dropout=0,
                  kernel_size=[3, 3, 3], padding=[1, 1, 1], stride=[1, 1, 1], nb_filters=[64, 64, 64],
-                 pooling=[(1, 4), (1, 4), (1, 4)]
+                 pooling=[(1, 4), (1, 4), (1, 4)], poolingFunc = "avg", skip_connection = True
                  ):
         super(CNN, self).__init__()
         self.nb_filters = nb_filters
@@ -61,9 +61,23 @@ class CNN(nn.Module):
 
         batch_norm = True
         # 128x862x64
+        #for i in range(len(nb_filters)):
+        #    conv(i, batch_norm, conv_dropout, activ=activation)
+        #    # bs x tframe x mels
+        #    if poolingFunc == "avg":
+        #        cnn.add_module('pooling{0}'.format(i), nn.AvgPool2d(pooling[i]))
+        #    elif  poolingFunc == "max":
+        #        cnn.add_module('pooling{0}'.format(i), nn.MaxPool2d(pooling[i]))
+
+        # using skip connection (with rasidual block)
+        in_channels = n_in_channel
+
         for i in range(len(nb_filters)):
-            conv(i, batch_norm, conv_dropout, activ=activation)
-            cnn.add_module('pooling{0}'.format(i), nn.AvgPool2d(pooling[i]))  # bs x tframe x mels
+            out_channels = nb_filters[i]
+            cnn.add_module(f'resblock{i}', ResidualConvBlock(in_channels, out_channels, kernel_size[i], stride[i], padding[i],
+                                                            activation, conv_dropout))
+            cnn.add_module('pooling{0}'.format(i), nn.AvgPool2d(pooling[i]))
+            in_channels = out_channels  # 다음 블록의 입력 채널을 현재의 출력 채널로 설정
 
         self.cnn = cnn
 
@@ -81,6 +95,37 @@ class CNN(nn.Module):
         # conv features
         x = self.cnn(x)
         return x
+
+class ResidualConvBlock(nn.Module):
+    def __init__(self, in_channels, out_channels, kernel_size, stride, padding, activation='relu', dropout=None):
+        super(ResidualConvBlock, self).__init__()
+        self.conv = nn.Conv2d(in_channels, out_channels, kernel_size, stride, padding)
+        self.bn = nn.BatchNorm2d(out_channels, eps=0.001, momentum=0.99)
+        self.dropout = nn.Dropout(dropout) if dropout is not None else None
+        self.activation = nn.ReLU() if activation == 'relu' else nn.LeakyReLU(0.2)
+
+        # Residual connection을 위한 downsample 레이어가 필요한 경우
+        self.downsample = None
+        if in_channels != out_channels or stride != 1:
+            self.downsample = nn.Sequential(
+                nn.Conv2d(in_channels, out_channels, 1, stride, bias=False),
+                nn.BatchNorm2d(out_channels, eps=0.001, momentum=0.99)
+            )
+
+    def forward(self, x):
+        identity = x
+        out = self.conv(x)
+        out = self.bn(out)
+        out = self.activation(out)
+        if self.dropout:
+            out = self.dropout(out)
+
+        if self.downsample:
+            identity = self.downsample(x)
+
+        out += identity
+        out = self.activation(out)
+        return out
 
 class Resnet(nn.Module):
     def __init__(self, n_in_channel, activation="relu", conv_dropout=0,
@@ -101,7 +146,7 @@ class Resnet(nn.Module):
 
         # resnet input channel is 3. Need change channel
         if n_in_channel != 3:
-            self.base_model.conv1 = nn.Conv2d(n_in_channel, 64, kernel_size=kernel_size[0], stride=stride[0], padding=padding[0], bias=False)
+            self.base_model.conv1 = nn.Conv2d(n_in_channel, nb_filters[0], kernel_size=kernel_size[0], stride=stride[0], padding=padding[0], bias=False)
 
         self.cnn = nn.Sequential(*list(self.base_model.children())[:-2])
         self.cnn.add_module("adjust_conv2d",nn.Conv2d(2048, 128, 1))
