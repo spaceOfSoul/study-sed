@@ -58,7 +58,7 @@ max_learning_rate = 0.001  # Used if adjust_lr is True
 default_learning_rate = 0.001  # Used if adjust_lr is False
 
 # Post processing
-median_window_s = 0.5
+median_window_s = 0.45
 
 # Classes
 file_path = os.path.abspath(os.path.dirname(__file__))

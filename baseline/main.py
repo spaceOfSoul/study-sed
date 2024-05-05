@@ -208,6 +208,9 @@ def get_dfs(desed_dataset, nb_files=None, separated_sources=False):
 
 
 if __name__ == '__main__':
+    
+    os.environ['PYTORCH_CUDA_ALLOC_CONF'] = 'max_split_size_mb:128'
+    
     torch.manual_seed(2020)
     np.random.seed(2020)
     logger = create_logger(__name__ + "/" + inspect.currentframe().f_code.co_name, terminal_level=cfg.terminal_level)
@@ -246,7 +249,7 @@ if __name__ == '__main__':
     add_axis_conv = 0
 
     # Model taken from 2nd of dcase19 challenge: see Delphin-Poulat2019 in the results.
-    n_layers = 7
+    n_layers = 5
     crnn_kwargs = {"n_in_channel": n_channel, "nclass": len(cfg.classes), "attention": True, "n_RNN_cell": 128,
                    "n_layers_RNN": 2,
 
@@ -255,7 +258,8 @@ if __name__ == '__main__':
                    "dropout": 0.5,
                    "kernel_size": n_layers * [3], "padding": n_layers * [1], "stride": n_layers * [1],
 
-                   "nb_filters": [16,  32,  64,  128,  128, 256, 256],
+                    #   "nb_filters": [16,  32,  64,  128,  128, 128, 128],
+                    "nb_filters":[256,256,256,256,256], 
                    "pooling": [[2, 2], [2, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2]],# cnn-rnn
                     #"pooling": [[1, 2], [1, 2], [1, 2], [1, 2], [1, 2]] # cnn-rnn
 
@@ -459,6 +463,8 @@ if __name__ == '__main__':
                                      save_predictions=predicitons_fname)
     psds = compute_psds_from_operating_points(pred_ss_thresh, validation_labels_df, durations_validation)
     
+    os.environ['PYTORCH_CUDA_ALLOC_CONF'] = ''
+
     load_dotenv()
     TOKEN = os.getenv('DISCORD_TOKEN')
     USER_ID = os.getenv('USER_ID')

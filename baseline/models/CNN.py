@@ -76,8 +76,11 @@ class CNN(nn.Module):
             out_channels = nb_filters[i]
             cnn.add_module(f'resblock{i}', ResidualConvBlock(in_channels, out_channels, kernel_size[i], stride[i], padding[i],
                                                             activation, conv_dropout))
-            cnn.add_module('pooling{0}'.format(i), nn.AvgPool2d(pooling[i]))
+            
             in_channels = out_channels  # 다음 블록의 입력 채널을 현재의 출력 채널로 설정
+
+        for i in range(len(pooling)):
+            cnn.add_module('pooling{0}'.format(i), nn.AvgPool2d(pooling[i]))
 
         self.cnn = cnn
 
