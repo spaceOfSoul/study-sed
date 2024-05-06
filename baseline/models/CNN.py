@@ -60,27 +60,15 @@ class CNN(nn.Module):
                                nn.Dropout(dropout))
 
         batch_norm = True
+        # default CNN
         # 128x862x64
-        #for i in range(len(nb_filters)):
-        #    conv(i, batch_norm, conv_dropout, activ=activation)
-        #    # bs x tframe x mels
-        #    if poolingFunc == "avg":
-        #        cnn.add_module('pooling{0}'.format(i), nn.AvgPool2d(pooling[i]))
-        #    elif  poolingFunc == "max":
-        #        cnn.add_module('pooling{0}'.format(i), nn.MaxPool2d(pooling[i]))
-
-        # using skip connection (with rasidual block)
-        in_channels = n_in_channel
-
         for i in range(len(nb_filters)):
-            out_channels = nb_filters[i]
-            cnn.add_module(f'resblock{i}', ResidualConvBlock(in_channels, out_channels, kernel_size[i], stride[i], padding[i],
-                                                            activation, conv_dropout))
-            
-            in_channels = out_channels  # 다음 블록의 입력 채널을 현재의 출력 채널로 설정
-
-        for i in range(len(pooling)):
-            cnn.add_module('pooling{0}'.format(i), nn.AvgPool2d(pooling[i]))
+            conv(i, batch_norm, conv_dropout, activ=activation)
+            # bs x tframe x mels
+            if poolingFunc == "avg":
+                cnn.add_module('pooling{0}'.format(i), nn.AvgPool2d(pooling[i]))
+            elif  poolingFunc == "max":
+                cnn.add_module('pooling{0}'.format(i), nn.MaxPool2d(pooling[i]))
 
         self.cnn = cnn
 
@@ -130,38 +118,33 @@ class ResidualConvBlock(nn.Module):
         out = self.activation(out)
         return out
 
-class Resnet(nn.Module):
-    def __init__(self, n_in_channel, activation="relu", conv_dropout=0,
-                 kernel_size=[3, 3, 3], padding=[1, 1, 1], stride=[1, 1, 1], nb_filters=[64, 64, 64],
-                 pooling=[(1, 4), (1, 4), (1, 4)], resnet_model='resnet50'):
-        super(Resnet, self).__init__()
-        self.n_in_channel = n_in_channel
+class SkipCNN(nn.Module):
+    def __init__(self, n_in_channel, activation="Relu", conv_dropout=0,
+             kernel_size=[3, 3, 3], padding=[1, 1, 1], stride=[1, 1, 1], nb_filters=[64, 64, 64],
+             pooling=[(1, 4), (1, 4), (1, 4)], poolingFunc = "avg", skip_connection = True
+             ):
+        super(SkipCNN, self).__init__()
+
         self.nb_filters = nb_filters
 
-        if resnet_model == 'resnet18':
-            self.base_model = models.resnet18(pretrained=True)
-        elif resnet_model == 'resnet34':
-            self.base_model = models.resnet34(pretrained=True)
-        elif resnet_model == 'resnet50':
-            self.base_model = models.resnet50(pretrained=True)
-        else:
-            raise ValueError('Unsupported ResNet model')
+        self.cnn = nn.Sequential()
 
-        # resnet input channel is 3. Need change channel
-        if n_in_channel != 3:
-            self.base_model.conv1 = nn.Conv2d(n_in_channel, nb_filters[0], kernel_size=kernel_size[0], stride=stride[0], padding=padding[0], bias=False)
+        in_channels = n_in_channel
+        pooling_index = 0
+        for i in range(len(nb_filters)):
+            out_channels = nb_filters[i]
+            self.cnn.add_module(f'resblock{i}', ResidualConvBlock(in_channels, out_channels, kernel_size[i], stride[i], padding[i],
+                                                            activation, conv_dropout))
 
-        self.cnn = nn.Sequential(*list(self.base_model.children())[:-2])
-        self.cnn.add_module("adjust_conv2d",nn.Conv2d(2048, 128, 1))
-        # pollings
-        self.pool = nn.Sequential()
+            in_channels = out_channels  # 다음 블록의 입력 채널을 현재의 출력 채널로 설정
+
         for i in range(len(pooling)):
-            self.pool.add_module('pooling{0}'.format(i), nn.AvgPool2d(pooling[i]))
+            if poolingFunc == "avg":
+                self.cnn.add_module('pooling{0}'.format(i), nn.AvgPool2d(pooling[i]))
+            elif  poolingFunc == "max":
+                self.cnn.add_module('pooling{0}'.format(i), nn.MaxPool2d(pooling[i]))
 
-        # dropout
-        if conv_dropout > 0:
-            self.dropout = nn.Dropout(conv_dropout)
-    
+
     def load_state_dict(self, state_dict, strict=True):
         self.cnn.load_state_dict(state_dict)
 
@@ -169,21 +152,8 @@ class Resnet(nn.Module):
         return self.cnn.state_dict(destination=destination, prefix=prefix, keep_vars=keep_vars)
 
     def save(self, filename):
-        torch.save(self.state_dict(), filename)
+        torch.save(self.cnn.state_dict(), filename)
 
     def forward(self, x):
-        print(f'before cnn {x.shape}')
         x = self.cnn(x)
-        print(f'before pooling {x.shape}')
-        x = self.pool(x)
-        #for _, module in self.pool.named_children():
-        #    # size check
-        #    if x.size(2) >= module.kernel_size[0] and x.size(3) >= module.kernel_size[1]:
-        #        x = module(x)
-        #    else:
-        #        continue
-        print(f'after pooling {x.shape}')
-
-        if hasattr(self, 'dropout'):
-            x = self.dropout(x)
         return x

@@ -4,7 +4,7 @@ import torch.nn as nn
 import torch
 
 from models.RNN import BidirectionalGRU, BidirectionalLSTM, BidirectionalRNN
-from models.CNN import CNN, Resnet
+from models.CNN import CNN, SkipCNN
 
 
 class CRNN(nn.Module):
@@ -21,8 +21,8 @@ class CRNN(nn.Module):
             n_in_cnn = 1
         if cnn_type == "CNN":
             self.cnn = CNN(n_in_cnn, activation, dropout, **kwargs)
-        elif cnn_type == "ResNet":
-            self.cnn = Resnet(n_in_cnn, activation, dropout, **kwargs)
+        elif cnn_type == "SkipCNN":
+            self.cnn = SkipCNN(n_in_cnn, activation, dropout, **kwargs)
 
         if not train_cnn:
             for param in self.cnn.parameters():
