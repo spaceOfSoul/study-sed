@@ -5,6 +5,7 @@ import torch
 
 from models.RNN import BidirectionalGRU, BidirectionalLSTM, BidirectionalRNN
 from models.CNN import CNN, SkipCNN
+from models.RESNET import ResNet
 
 
 class CRNN(nn.Module):
@@ -23,6 +24,8 @@ class CRNN(nn.Module):
             self.cnn = CNN(n_in_cnn, activation, dropout, **kwargs)
         elif cnn_type == "SkipCNN":
             self.cnn = SkipCNN(n_in_cnn, activation, dropout, **kwargs)
+        elif cnn_type == "Resnet":
+            self.cnn = ResNet(n_in_cnn, activation, dropout, **kwargs)
 
         if not train_cnn:
             for param in self.cnn.parameters():
@@ -30,7 +33,8 @@ class CRNN(nn.Module):
         self.train_cnn = train_cnn
         if rnn_type == 'BGRU':
             nb_in = self.cnn.nb_filters[-1]
-
+            # if not equals dimension, try this valu
+            #nb_in = 512
             if self.cnn_integration:
                 # self.fc = nn.Linear(nb_in * n_in_channel, nb_in)
                 nb_in = nb_in * n_in_channel

@@ -43,7 +43,7 @@ max_consistency_cost = 2
 in_memory = True
 in_memory_unlab = False
 num_workers = 8
-batch_size = 24 # 24 (change because cuda memorry aloc conf)
+batch_size = 12 # 24 (change because cuda memorry aloc conf)
 noise_snr = 30
 
 n_epoch = 200

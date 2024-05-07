@@ -258,15 +258,15 @@ if __name__ == '__main__':
                    "dropout": 0.5,
                    "kernel_size": n_layers * [3], "padding": n_layers * [1], "stride": n_layers * [1],
 
-                    "nb_filters": [16,  32,  64,  128,  128, 256, 256],
-                    #"nb_filters":[256,256,256,256,256], 
-                #   "pooling": [[4, 4], [4, 4], [4,4], [1,2]],# cnn-rnn
-                    "pooling": [[4, 4], [1, 4], [1,4], [1, 2]], # cnn-rnn
+                    "nb_filters": [32,  64,  128,  128,  256, 128, 128],
+                   "pooling": [[2, 2], [2, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2]],
+                    #"pooling": [[4, 4], [1,4], [1, 2]], # cnn-rnn
 
-                    "poolingFunc":"max", # avg, max
-
+                    "poolingFunc":"avg", # avg, max
+                    
                     "cnn_type":"SkipCNN",
-                    #"cnn_type":"ResNet",
+                    #"cnn":"CNN",
+                    #"cnn_type":"Resnet",
 
                     "rnn_type":"BGRU"
                     #"rnn_type":"BRNN"
