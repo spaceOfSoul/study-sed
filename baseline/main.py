@@ -258,13 +258,13 @@ if __name__ == '__main__':
                    "dropout": 0.5,
                    "kernel_size": n_layers * [3], "padding": n_layers * [1], "stride": n_layers * [1],
 
-                    "nb_filters": [32,  64,  128,  128,  256, 128, 128],
+                    "nb_filters": [64,  64,  128,  128,  256, 128, 128],
                    "pooling": [[2, 2], [2, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2]],
                     #"pooling": [[4, 4], [1,4], [1, 2]], # cnn-rnn
 
                     "poolingFunc":"avg", # avg, max
                     
-                    "cnn_type":"SkipCNN",
+                    "cnn_type":"EfficientNet",
                     #"cnn":"CNN",
                     #"cnn_type":"Resnet",
 
