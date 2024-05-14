@@ -95,6 +95,7 @@ class MBConv(nn.Module):
 
         # not drop(stchastic depth)
         layer.append(Bottleneck(inplanes, planes, kernel_size, stride, expand, se_ratio))
+        layer.append(nn.BatchNorm2d(planes, momentum=0.99,eps=1e-3))
 
         for l in range(1, repeat):
             if count_layer is None:
@@ -103,6 +104,7 @@ class MBConv(nn.Module):
                 # stochastic depth
                 prob = 1.0 - (count_layer + l) / sum_layer * (1 - pl)
                 layer.append(Bottleneck(planes, planes, kernel_size, 1, expand, se_ratio, prob=prob))
+            layer.append(nn.BatchNorm2d(planes, momentum=0.99,eps=1e-3))
 
         self.layer = nn.Sequential(*layer)
 
@@ -129,16 +131,43 @@ class Flatten(nn.Module):
 
 class EfficientNet(nn.Module):
     def __init__(self,width_coef=1., depth_coef=1., scale=1.,
-                 dropout_ratio=0.5, se_ratio=0.25, stochastic_depth=True, pl=0.5):
+                 dropout_ratio=0.2, se_ratio=0.25, stochastic_depth=False, pl=0.5):
 
         super(EfficientNet, self).__init__()
-        channels = [16, 32, 64, 64, 128, 256, 128, 128, 128]
-        expands = [1, 6, 6, 6, 6, 6, 6]
-        repeats = [1, 2, 2, 3, 3, 4, 1]
-        strides = [1, 2, 2, 2, 1, 2, 1]
-        kernel_sizes = [3, 3, 5, 3, 5, 5, 3]
+        # channels = [32, 16, 24, 32, 64, 96, 160, 320, 1280] # original parameters
+        # expands = [1, 6, 6, 6, 6, 6, 6]
+        # repeats = [1, 2, 2, 3, 3, 4, 1]
+        # strides = [1, 2, 2, 2, 1, 2, 1]
+
+        # channels = [128, 128, 128, 128, 128, 128, 128, 128, 128] # good loss, but overffiting
+        # expands = [1, 1, 1, 1, 1, 1, 1]
+        # repeats = [1, 1, 1, 1, 1, 1, 1]
+        # strides = [1, 1, 1, 1, 1, 1, 1]
+
+        channels = [64,64,64,64,64,128,128,128,128]
+        expands = [3,3,3,1,1,1,1]
+        repeats = [1,1,1, 1, 1, 1, 1]
+        strides = [1, 1, 1, 1, 1, 1, 1]
+
+        kernel_sizes = [3,3,3,3,3,3,3]
         depth = depth_coef
         width = width_coef
+
+        print("channel : ")
+        print(channels)
+        print("expands : ")
+        print(expands)
+        print("repeats : ")
+        print(repeats)
+        print("strides : ")
+        print(strides)
+        print("kernel_sizes : ")
+        print(kernel_sizes)
+        print("depth : ")
+        print(depth)
+        print("width : ")
+        print(width)
+        print("dropout_ratio : " , dropout_ratio)
 
 
         channels = [round(x*width) for x in channels] # [int(x*width) for x in channels]

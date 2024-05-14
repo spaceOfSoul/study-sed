@@ -1,8 +1,8 @@
 #!/bin/bash
 conda create -y -n dcase2020 python=3.10
 conda activate dcase2020
-conda install -y pandas h5py scipy
-conda install -y pytorch torchvision cudatoolkit -c pytorch # for gpu install (or cpu in MAC)
+pip install pandas h5py scipy
+pip install pytorch torchvision cudatoolkit # for gpu install (or cpu in MAC)
 # conda install pytorch-cpu torchvision-cpu -c pytorch (cpu linux)
 pip install pysoundfile librosa youtube-dl tqdm
 pip install  ffmpeg

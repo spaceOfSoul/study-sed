@@ -8,6 +8,12 @@ from models.CNN import CNN, SkipCNN
 from models.RESNET import ResNet
 from models.EfficientNet import EfficientNet
 
+# for unit test
+# from RNN import BidirectionalGRU, BidirectionalLSTM, BidirectionalRNN
+# from CNN import CNN, SkipCNN
+# from RESNET import ResNet
+# from EfficientNet import EfficientNet
+
 class CRNN(nn.Module):
 
     def __init__(self, n_in_channel, nclass, attention=False, activation="Relu", dropout=0,

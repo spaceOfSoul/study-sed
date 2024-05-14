@@ -76,6 +76,12 @@ def train(train_loader, model, optimizer, c_epoch, ema_model=None, mask_weak=Non
         mask_strong: slice or list, mask the batch to get only the strong labeled data (used to calcultate the loss)
         adjust_lr: bool, Whether or not to adjust the learning rate during training (params in config)
     """
+
+    # torch.distributed.init_process_group(backend='nccl',
+    #                         init_method='tcp://127.0.0.1:23456',
+    #                         world_size=ngpus_per_node,
+    #                         rank=process_id)
+
     log = create_logger(__name__ + "/" + inspect.currentframe().f_code.co_name, terminal_level=cfg.terminal_level)
 
     class_criterion = nn.BCELoss()
