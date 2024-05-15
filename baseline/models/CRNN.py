@@ -3,15 +3,20 @@ import warnings
 import torch.nn as nn
 import torch
 
+#from RNN import BidirectionalGRU, BidirectionalLSTM, BidirectionalRNN
+#from CNN import CNN, SkipCNN
+#from RESNET import ResNet
+#from EfficientNet import EfficientNet
+
 from models.RNN import BidirectionalGRU, BidirectionalLSTM, BidirectionalRNN
 from models.CNN import CNN, SkipCNN
 from models.RESNET import ResNet
-from models.EfficientNet import EfficientNet
+from models.EfficientNet import EfficientNet, EfficientNetWrapper
 
 class CRNN(nn.Module):
 
     def __init__(self, n_in_channel, nclass, attention=False, activation="Relu", dropout=0,
-                 train_cnn=True, cnn_type='CNN', rnn_type='BGRU', n_RNN_cell=64, n_layers_RNN=1, dropout_recurrent=0,
+                 train_cnn=True, cnn_type='EfficientNet', rnn_type='BGRU', n_RNN_cell=64, n_layers_RNN=1, dropout_recurrent=0,
                  cnn_integration=False,poolingFunc="avg", **kwargs):
         super(CRNN, self).__init__()
         self.n_in_channel = n_in_channel
@@ -60,7 +65,8 @@ class CRNN(nn.Module):
             self.rnn = BidirectionalRNN(nb_in,
                                         n_RNN_cell, dropout=dropout_recurrent, num_layers=n_layers_RNN)
         else:
-            NotImplementedError("Only BGRU supported for CRNN for now")
+            raise NotImplementedError("Only BGRU, BLSTM, BRNN are supported for CRNN for now")
+
         self.dropout = nn.Dropout(dropout)
         self.dense = nn.Linear(n_RNN_cell*2, nclass)
         self.sigmoid = nn.Sigmoid()
@@ -75,9 +81,9 @@ class CRNN(nn.Module):
                 param.requires_grad = False
 
     def load_state_dict(self, state_dict, strict=True):
-        self.cnn.load_state_dict(state_dict["cnn"])
-        self.rnn.load_state_dict(state_dict["rnn"])
-        self.dense.load_state_dict(state_dict["dense"])
+        self.cnn.load_state_dict(state_dict["cnn"], strict=strict)
+        self.rnn.load_state_dict(state_dict["rnn"], strict=strict)
+        self.dense.load_state_dict(state_dict["dense"], strict=strict)
 
     def state_dict(self, destination=None, prefix='', keep_vars=False):
         state_dict = {
@@ -132,5 +138,26 @@ class CRNN(nn.Module):
 
 
 if __name__ == '__main__':
-    CRNN(64, 10, kernel_size=[3, 3, 3], padding=[1, 1, 1], stride=[1, 1, 1], nb_filters=[64, 64, 64],
+    model = CRNN(1, 10, kernel_size=[3, 3, 3], padding=[1, 1, 1], stride=[1, 1, 1], nb_filters=[64, 64, 64],
          pooling=[(1, 4), (1, 4), (1, 4)])
+    input_data = torch.randn(1, 1, 64, 64)  # batch=1, channel=1, height=64, width=64
+
+    strong, weak = model(input_data)
+    print(f"Initial strong output shape: {strong.shape}")
+    print(f"Initial weak output shape: {weak.shape}")
+
+    torch.save(model.state_dict(), 'crnn_state_dict.pth')
+
+    new_model = CRNN(1, 10, kernel_size=[3, 3, 3], padding=[1, 1, 1], stride=[1, 1, 1], nb_filters=[64, 64, 64],
+                     pooling=[(1, 4), (1, 4), (1, 4)])
+    new_model.load_state_dict(torch.load('crnn_state_dict.pth'))
+
+    # output check
+    new_strong, new_weak = new_model(input_data)
+    print(f"New strong output shape: {new_strong.shape}")
+    print(f"New weak output shape: {new_weak.shape}")
+
+    strong_equal = torch.equal(strong, new_strong)
+    weak_equal = torch.equal(weak, new_weak)
+    print(f"Strong outputs are equal: {strong_equal}")
+    print(f"Weak outputs are equal: {weak_equal}")

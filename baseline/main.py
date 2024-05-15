@@ -337,6 +337,7 @@ if __name__ == '__main__':
     # Model
     # ##############
     crnn = CRNN(**crnn_kwargs)
+
     pytorch_total_params = sum(p.numel() for p in crnn.parameters() if p.requires_grad)
     logger.info(crnn)
     logger.info("number of parameters in the model: {}".format(pytorch_total_params))

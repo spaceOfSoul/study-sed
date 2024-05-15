@@ -115,8 +115,6 @@ class MBConv(nn.Module):
         out = self.layer(x)
         return out
 
-
-
 class Upsample(nn.Module):
     def __init__(self, scale):
         super(Upsample, self).__init__()
@@ -131,125 +129,114 @@ class Flatten(nn.Module):
         super(Flatten, self).__init__()
     def forward(self, x):
         return x.view(x.size(0), -1)
-
+    
 
 class EfficientNet(nn.Module):
-    def __init__(self,width_coef=1., depth_coef=1., scale=1.,
+    def __init__(self, width_coef=1., depth_coef=1., scale=1.,
                  dropout_ratio=0.5, se_ratio=0.25, stochastic_depth=False, pl=0.5):
-
         super(EfficientNet, self).__init__()
-        channels = [16,  32,  64,  128,  128, 128, 128]
-        expands = [1,1,1, 1, 1]
 
-        # and need stochastic_depth..?
-        # stochastic_depth is adjust layer from count layer
-
-        repeats = [1,1,1, 1, 1]
-        strides = [1, 1, 1, 1, 1]
+        channels = [64, 64, 64, 64, 64, 128, 128, 128, 128]
+        expands = [2, 2, 2, 1, 1, 1, 1]
+        repeats = [1, 1, 1, 1, 1, 1, 1]
+        strides = [1, 1, 1, 1, 1, 1, 1]
         kernel_sizes = [3, 3, 3, 3, 3, 3, 3]
         depth = depth_coef
         width = width_coef
 
-        print("channels : ")
-        print(channels)
-        print("expands : ")
-        print(expands)
-        print("repeats : ")
-        print(repeats)
-        print("strides : ")
-        print(strides)
-        print("kernel_sizes : ")
-        print(kernel_sizes)
-
-
-        channels = [round(x*width) for x in channels] # [int(x*width) for x in channels]
-        repeats = [round(x*depth) for x in repeats] # [int(x*width) for x in repeats]
-
+        channels = [round(x * width) for x in channels]
+        repeats = [round(x * depth) for x in repeats]
         sum_layer = sum(repeats)
 
         self.upsample = Upsample(scale)
         self.swish = Swish()
 
-        self.stage1 = nn.Sequential(
+        layers = []
+        layers.append(nn.Sequential(
             nn.Conv2d(1, channels[0], kernel_size=3, stride=2, padding=1, bias=False),
-            nn.BatchNorm2d(channels[0], momentum=0.99, eps=1e-3))
+            nn.BatchNorm2d(channels[0], momentum=0.99, eps=1e-3)
+        ))
 
-        if stochastic_depth:
-            # stochastic depth
-            self.stage2 = MBConv(channels[0], channels[1], repeats[0], kernel_size=kernel_sizes[0],
-                                 stride=strides[0], expand=expands[0], se_ratio=se_ratio, sum_layer=sum_layer,
-                                 count_layer=sum(repeats[:0]), pl=pl)
-            self.stage3 = MBConv(channels[1], channels[2], repeats[1], kernel_size=kernel_sizes[1],
-                                 stride=strides[1], expand=expands[1], se_ratio=se_ratio, sum_layer=sum_layer,
-                                 count_layer=sum(repeats[:1]), pl=pl)
-            self.stage4 = MBConv(channels[2], channels[3], repeats[2], kernel_size=kernel_sizes[2],
-                                 stride=strides[2], expand=expands[2], se_ratio=se_ratio, sum_layer=sum_layer,
-                                 count_layer=sum(repeats[:2]), pl=pl)
-            self.stage5 = MBConv(channels[3], channels[4], repeats[3], kernel_size=kernel_sizes[3],
-                                 stride=strides[3], expand=expands[3], se_ratio=se_ratio, sum_layer=sum_layer,
-                                 count_layer=sum(repeats[:3]), pl=pl)
-            self.stage6 = MBConv(channels[4], channels[5], repeats[4], kernel_size=kernel_sizes[4],
-                                 stride=strides[4], expand=expands[4], se_ratio=se_ratio, sum_layer=sum_layer,
-                                 count_layer=sum(repeats[:4]), pl=pl)
-            #self.stage7 = MBConv(channels[5], channels[6], repeats[5], kernel_size=kernel_sizes[5],
-            #                     stride=strides[5], expand=expands[5], se_ratio=se_ratio, sum_layer=sum_layer,
-            #                     count_layer=sum(repeats[:5]), pl=pl)
-            #self.stage8 = MBConv(channels[6], channels[7], repeats[6], kernel_size=kernel_sizes[6],
-            #                     stride=strides[6], expand=expands[6], se_ratio=se_ratio, sum_layer=sum_layer,
-            #                     count_layer=sum(repeats[:6]), pl=pl)
-        else:
-            self.stage2 = MBConv(channels[0], channels[1], repeats[0], kernel_size=kernel_sizes[0],
-                                 stride=strides[0], expand=expands[0], se_ratio=se_ratio, sum_layer=sum_layer)
-            self.stage3 = MBConv(channels[1], channels[2], repeats[1], kernel_size=kernel_sizes[1],
-                                 stride=strides[1], expand=expands[1], se_ratio=se_ratio, sum_layer=sum_layer)
-            self.stage4 = MBConv(channels[2], channels[3], repeats[2], kernel_size=kernel_sizes[2],
-                                 stride=strides[2], expand=expands[2], se_ratio=se_ratio, sum_layer=sum_layer)
-            self.stage5 = MBConv(channels[3], channels[4], repeats[3], kernel_size=kernel_sizes[3],
-                                 stride=strides[3], expand=expands[3], se_ratio=se_ratio, sum_layer=sum_layer)
-            self.stage6 = MBConv(channels[4], channels[5], repeats[4], kernel_size=kernel_sizes[4],
-                                 stride=strides[4], expand=expands[4], se_ratio=se_ratio, sum_layer=sum_layer)
-            #self.stage7 = MBConv(channels[5], channels[6], repeats[5], kernel_size=kernel_sizes[5],
-            #                     stride=strides[5], expand=expands[5], se_ratio=se_ratio, sum_layer=sum_layer)
-            #self.stage8 = MBConv(channels[6], channels[7], repeats[6], kernel_size=kernel_sizes[6],
-            #                     stride=strides[6], expand=expands[6], se_ratio=se_ratio, sum_layer=sum_layer)
+        for i in range(7):
+            layers.append(MBConv(
+                inplanes=channels[i],
+                planes=channels[i+1],
+                repeat=repeats[i],
+                kernel_size=kernel_sizes[i],
+                stride=strides[i],
+                expand=expands[i],
+                se_ratio=se_ratio,
+                sum_layer=sum_layer,
+                count_layer=sum(repeats[:i]),
+                pl=pl
+            ))
 
-        self.stage9 = nn.Sequential(
-                            nn.Conv2d(channels[5], channels[6], kernel_size=1, bias=False),
-                            nn.BatchNorm2d(channels[6], momentum=0.99, eps=1e-3),
-                            Swish(),
-                            nn.AdaptiveAvgPool2d((157, 1)),
-                            nn.Dropout(p=dropout_ratio),
-                        )
+        layers.append(nn.Sequential(
+            nn.Conv2d(channels[6], channels[7], kernel_size=1, bias=False),
+            nn.BatchNorm2d(channels[7], momentum=0.99, eps=1e-3),
+            Swish(),
+            nn.AdaptiveAvgPool2d((157, 1)),
+            nn.Dropout(p=dropout_ratio)
+        ))
+
+        self.cnn = nn.Sequential(*layers)
 
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
                 nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
-                # nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='sigmoid')
             elif isinstance(m, (nn.BatchNorm2d, nn.GroupNorm)):
                 nn.init.constant_(m.weight, 1)
                 nn.init.constant_(m.bias, 0)
 
     def load_state_dict(self, state_dict, strict=True):
-        super(EfficientNet, self).load_state_dict(state_dict, strict)
+        self.cnn.load_state_dict(state_dict)
 
     def state_dict(self, destination=None, prefix='', keep_vars=False):
-        return super(EfficientNet, self).state_dict(destination=destination, prefix=prefix, keep_vars=keep_vars)
+        return self.cnn.state_dict(destination=destination, prefix=prefix, keep_vars=keep_vars)
 
     def save(self, filename):
-        torch.save(self.state_dict(), filename)
+        torch.save(self.cnn.state_dict(), filename)
 
     def forward(self, x):
-        
         x = self.upsample(x)
-        x1 = self.swish(self.stage1(x))
-        x2 = self.swish(self.stage2(x1))
-        x3 = self.swish(self.stage3(x2))
-        x4 = self.swish(self.stage4(x3)) # 24*128*frm*frq
-        x5 = self.swish(self.stage5(x4))
-        x6 = self.swish(self.stage6(x5))
-        x7 = self.swish(self.stage7(x6))
-        x8 = self.swish(self.stage8(x7))
+        x = self.cnn(x)
+        return x
 
-        logit = self.stage9(x8)
+class EfficientNetWrapper(nn.Module):
+    def __init__(self, efficient_net):
+        super(EfficientNetWrapper, self).__init__()
+        self.efficient_net = efficient_net
 
-        return logit
+    def forward(self, x):
+        return self.efficient_net(x)
+
+    def load_state_dict(self, state_dict, strict=True):
+        self.efficient_net.load_state_dict(state_dict)
+
+    def state_dict(self, destination=None, prefix='', keep_vars=False):
+        return self.efficient_net.state_dict(destination=destination, prefix=prefix, keep_vars=keep_vars)
+
+    def save(self, filename):
+        torch.save(self.efficient_net.state_dict(), filename)
+
+
+if __name__ == "__main__":
+    model = EfficientNet()
+    for name, layer in model.named_modules():
+        print(f"Layer name: {name}, Layer: {layer}")
+
+    input_data = torch.randn(1, 1, 224, 224)
+    output = model(input_data)
+    print(f"Output shape: {output.shape}")
+
+    # 모델의 state_dict 저장
+    torch.save(model.state_dict(), 'efficientnet_state_dict.pth')
+
+    # 새로운 모델 인스턴스화 및 state_dict 로드
+    new_model = EfficientNet()
+    new_model.load_state_dict(torch.load('efficientnet_state_dict.pth'))
+
+    # 새로운 모델의 출력을 확인하여 동일한지 확인
+    new_output = new_model(input_data)
+    print(f"New output shape: {new_output.shape}")
+    print(f"Outputs are the same: {torch.allclose(output, new_output)}")
