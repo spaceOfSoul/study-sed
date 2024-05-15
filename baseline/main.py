@@ -101,7 +101,7 @@ def train(train_loader, model, optimizer, c_epoch, ema_model=None, mask_weak=Non
 
         loss = None
         # Weak BCE Loss
-        target_weak = target.max(-2)[0]  # Take the max in the time axis
+        target_weak = target.max(-2)[0] # Take the max in the time axis
         if mask_weak is not None:
             weak_class_loss = class_criterion(weak_pred[mask_weak], target_weak[mask_weak])
             ema_class_loss = class_criterion(weak_pred_ema[mask_weak], target_weak[mask_weak])
@@ -258,20 +258,22 @@ if __name__ == '__main__':
                    "dropout": 0.5,
                    "kernel_size": n_layers * [3], "padding": n_layers * [1], "stride": n_layers * [1],
 
-                    "nb_filters": [64,  64,  128,  128,  256, 128, 128],
+                    "nb_filters": [16,  32,  64,  128,  128, 128, 128],
                    "pooling": [[2, 2], [2, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2]],
                     #"pooling": [[4, 4], [1,4], [1, 2]], # cnn-rnn
 
                     "poolingFunc":"avg", # avg, max
                     
                     "cnn_type":"EfficientNet",
-                    #"cnn":"CNN",
+                    #"cnn_type":"CNN",
                     #"cnn_type":"Resnet",
 
                     "rnn_type":"BGRU"
                     #"rnn_type":"BRNN"
                     #"rnn_type":"BLSTM"
                 }
+    
+    print(crnn_kwargs)
     pooling_time_ratio = 4  # 2 * 2
 
     out_nb_frames_1s = cfg.sample_rate / cfg.hop_size / pooling_time_ratio
@@ -346,7 +348,9 @@ if __name__ == '__main__':
         param.detach_()
 
     optim_kwargs = {"lr": cfg.default_learning_rate, "betas": (0.9, 0.999)}
-    optim = torch.optim.Adam(filter(lambda p: p.requires_grad, crnn.parameters()), **optim_kwargs)
+    optim = torch.optim.Adam(filter(lambda p: p.requires_grad, crnn.parameters()), **optim_kwargs) # original optim
+    #optim = torch.optim.AdamW(filter(lambda p: p.requires_grad, crnn.parameters()), **optim_kwargs)
+
     bce_loss = nn.BCELoss()
 
     state = {

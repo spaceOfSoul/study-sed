@@ -46,7 +46,7 @@ num_workers = 8
 batch_size = 24 # 24 (change because cuda memorry aloc conf)
 noise_snr = 30
 
-n_epoch = 250
+n_epoch = 200
 n_epoch_rampup = 50
 
 checkpoint_epochs = 1

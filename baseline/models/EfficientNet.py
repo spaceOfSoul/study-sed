@@ -4,6 +4,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.nn.parameter import Parameter
 
+# sigmoid
 class Swish(nn.Module):
     def __init__(self, train_beta=False):
         super(Swish, self).__init__()
@@ -15,6 +16,8 @@ class Swish(nn.Module):
     def forward(self, input):
         return input * torch.sigmoid(self.weight * input)
 
+# squeeze
+# fully connected and pooling
 class SqeezeExcitation(nn.Module):
     def __init__(self, inplanes, se_ratio):
         super(SqeezeExcitation, self).__init__()
@@ -34,10 +37,11 @@ class SqeezeExcitation(nn.Module):
         out = x * out.expand_as(x)
         return out
 
-
 class Bottleneck(nn.Module):
     def __init__(self,inplanes, planes, kernel_size, stride, expand, se_ratio, prob=1.0):
         super(Bottleneck, self).__init__()
+
+        # it has depthwise separable convolution
         if expand == 1:
             self.conv2 = nn.Conv2d(inplanes*expand, inplanes*expand, kernel_size=kernel_size, stride=stride,
                                    padding=kernel_size//2, groups=inplanes*expand, bias=False)
@@ -49,14 +53,15 @@ class Bottleneck(nn.Module):
             self.conv1 = nn.Conv2d(inplanes, inplanes*expand, kernel_size=1, bias=False)
             self.bn1 = nn.BatchNorm2d(inplanes*expand, momentum=0.99, eps=1e-3)
             self.conv2 = nn.Conv2d(inplanes*expand, inplanes*expand, kernel_size=kernel_size, stride=stride,
-                                   padding=kernel_size//2, groups=inplanes*expand, bias=False)
+                                   padding=kernel_size//2, groups=inplanes*expand, bias=False) # group is inplanes*expand, it is convolution independent for channel
             self.bn2 = nn.BatchNorm2d(inplanes*expand, momentum=0.99, eps=1e-3)
-            self.se = SqeezeExcitation(inplanes*expand, se_ratio)
-            self.conv3 = nn.Conv2d(inplanes*expand, planes, kernel_size=1, bias=False)
+            self.se = SqeezeExcitation(inplanes*expand, se_ratio) # adjust channel weight
+            self.conv3 = nn.Conv2d(inplanes*expand, planes, kernel_size=1, bias=False) # and combine after depthwise separable convolution
             self.bn3 = nn.BatchNorm2d(planes, momentum=0.99, eps=1e-3)
 
         self.swish = Swish()
         self.correct_dim = (stride == 1) and (inplanes == planes)
+        #self.correct_dim = True
         self.prob = torch.Tensor([prob])
 
     def forward(self, x):
@@ -111,6 +116,7 @@ class MBConv(nn.Module):
         return out
 
 
+
 class Upsample(nn.Module):
     def __init__(self, scale):
         super(Upsample, self).__init__()
@@ -129,16 +135,31 @@ class Flatten(nn.Module):
 
 class EfficientNet(nn.Module):
     def __init__(self,width_coef=1., depth_coef=1., scale=1.,
-                 dropout_ratio=0.5, se_ratio=0.25, stochastic_depth=True, pl=0.5):
+                 dropout_ratio=0.5, se_ratio=0.25, stochastic_depth=False, pl=0.5):
 
         super(EfficientNet, self).__init__()
-        channels = [16, 32, 64, 64, 128, 256, 128, 128, 128]
-        expands = [1, 6, 6, 6, 6, 6, 6]
-        repeats = [1, 2, 2, 3, 3, 4, 1]
-        strides = [1, 2, 2, 2, 1, 2, 1]
-        kernel_sizes = [3, 3, 5, 3, 5, 5, 3]
+        channels = [16,  32,  64,  128,  128, 128, 128]
+        expands = [1,1,1, 1, 1]
+
+        # and need stochastic_depth..?
+        # stochastic_depth is adjust layer from count layer
+
+        repeats = [1,1,1, 1, 1]
+        strides = [1, 1, 1, 1, 1]
+        kernel_sizes = [3, 3, 3, 3, 3, 3, 3]
         depth = depth_coef
         width = width_coef
+
+        print("channels : ")
+        print(channels)
+        print("expands : ")
+        print(expands)
+        print("repeats : ")
+        print(repeats)
+        print("strides : ")
+        print(strides)
+        print("kernel_sizes : ")
+        print(kernel_sizes)
 
 
         channels = [round(x*width) for x in channels] # [int(x*width) for x in channels]
@@ -170,12 +191,12 @@ class EfficientNet(nn.Module):
             self.stage6 = MBConv(channels[4], channels[5], repeats[4], kernel_size=kernel_sizes[4],
                                  stride=strides[4], expand=expands[4], se_ratio=se_ratio, sum_layer=sum_layer,
                                  count_layer=sum(repeats[:4]), pl=pl)
-            self.stage7 = MBConv(channels[5], channels[6], repeats[5], kernel_size=kernel_sizes[5],
-                                 stride=strides[5], expand=expands[5], se_ratio=se_ratio, sum_layer=sum_layer,
-                                 count_layer=sum(repeats[:5]), pl=pl)
-            self.stage8 = MBConv(channels[6], channels[7], repeats[6], kernel_size=kernel_sizes[6],
-                                 stride=strides[6], expand=expands[6], se_ratio=se_ratio, sum_layer=sum_layer,
-                                 count_layer=sum(repeats[:6]), pl=pl)
+            #self.stage7 = MBConv(channels[5], channels[6], repeats[5], kernel_size=kernel_sizes[5],
+            #                     stride=strides[5], expand=expands[5], se_ratio=se_ratio, sum_layer=sum_layer,
+            #                     count_layer=sum(repeats[:5]), pl=pl)
+            #self.stage8 = MBConv(channels[6], channels[7], repeats[6], kernel_size=kernel_sizes[6],
+            #                     stride=strides[6], expand=expands[6], se_ratio=se_ratio, sum_layer=sum_layer,
+            #                     count_layer=sum(repeats[:6]), pl=pl)
         else:
             self.stage2 = MBConv(channels[0], channels[1], repeats[0], kernel_size=kernel_sizes[0],
                                  stride=strides[0], expand=expands[0], se_ratio=se_ratio, sum_layer=sum_layer)
@@ -187,14 +208,14 @@ class EfficientNet(nn.Module):
                                  stride=strides[3], expand=expands[3], se_ratio=se_ratio, sum_layer=sum_layer)
             self.stage6 = MBConv(channels[4], channels[5], repeats[4], kernel_size=kernel_sizes[4],
                                  stride=strides[4], expand=expands[4], se_ratio=se_ratio, sum_layer=sum_layer)
-            self.stage7 = MBConv(channels[5], channels[6], repeats[5], kernel_size=kernel_sizes[5],
-                                 stride=strides[5], expand=expands[5], se_ratio=se_ratio, sum_layer=sum_layer)
-            self.stage8 = MBConv(channels[6], channels[7], repeats[6], kernel_size=kernel_sizes[6],
-                                 stride=strides[6], expand=expands[6], se_ratio=se_ratio, sum_layer=sum_layer)
+            #self.stage7 = MBConv(channels[5], channels[6], repeats[5], kernel_size=kernel_sizes[5],
+            #                     stride=strides[5], expand=expands[5], se_ratio=se_ratio, sum_layer=sum_layer)
+            #self.stage8 = MBConv(channels[6], channels[7], repeats[6], kernel_size=kernel_sizes[6],
+            #                     stride=strides[6], expand=expands[6], se_ratio=se_ratio, sum_layer=sum_layer)
 
         self.stage9 = nn.Sequential(
-                            nn.Conv2d(channels[7], channels[8], kernel_size=1, bias=False),
-                            nn.BatchNorm2d(channels[8], momentum=0.99, eps=1e-3),
+                            nn.Conv2d(channels[5], channels[6], kernel_size=1, bias=False),
+                            nn.BatchNorm2d(channels[6], momentum=0.99, eps=1e-3),
                             Swish(),
                             nn.AdaptiveAvgPool2d((157, 1)),
                             nn.Dropout(p=dropout_ratio),
@@ -208,19 +229,27 @@ class EfficientNet(nn.Module):
                 nn.init.constant_(m.weight, 1)
                 nn.init.constant_(m.bias, 0)
 
+    def load_state_dict(self, state_dict, strict=True):
+        super(EfficientNet, self).load_state_dict(state_dict, strict)
+
+    def state_dict(self, destination=None, prefix='', keep_vars=False):
+        return super(EfficientNet, self).state_dict(destination=destination, prefix=prefix, keep_vars=keep_vars)
+
+    def save(self, filename):
+        torch.save(self.state_dict(), filename)
 
     def forward(self, x):
         
         x = self.upsample(x)
-        x = self.swish(self.stage1(x))
-        x = self.swish(self.stage2(x))
-        x = self.swish(self.stage3(x))
-        x = self.swish(self.stage4(x))
-        x = self.swish(self.stage5(x))
-        x = self.swish(self.stage6(x))
-        x = self.swish(self.stage7(x))
-        x = self.swish(self.stage8(x))
+        x1 = self.swish(self.stage1(x))
+        x2 = self.swish(self.stage2(x1))
+        x3 = self.swish(self.stage3(x2))
+        x4 = self.swish(self.stage4(x3)) # 24*128*frm*frq
+        x5 = self.swish(self.stage5(x4))
+        x6 = self.swish(self.stage6(x5))
+        x7 = self.swish(self.stage7(x6))
+        x8 = self.swish(self.stage8(x7))
 
-        logit = self.stage9(x)
+        logit = self.stage9(x8)
 
         return logit

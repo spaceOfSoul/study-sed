@@ -22,7 +22,6 @@ import config as cfg
 logger = create_logger(__name__)
 torch.manual_seed(2020)
 
-
 def _load_crnn(state, model_name="model"):
     crnn_args = state[model_name]["args"]
     crnn_kwargs = state[model_name]["kwargs"]
