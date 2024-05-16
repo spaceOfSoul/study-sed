@@ -5,6 +5,7 @@ import inspect
 import os
 import time
 from pprint import pprint
+import copy
 
 import pandas as pd
 import numpy as np
@@ -381,24 +382,28 @@ if __name__ == '__main__':
     if cfg.early_stopping is not None:
         early_stopping_call = EarlyStopping(patience=cfg.early_stopping, val_comp="sup", init_patience=cfg.es_init_wait)
 
+    
     # ##############
     # Train
     # ##############
+    best_model = None
+    best_valid_synth_f1 = -np.inf
+
     results = pd.DataFrame(columns=["loss", "valid_synth_f1", "weak_metric", "global_valid"])
+
     for epoch in range(cfg.n_epoch):
         crnn.train()
-        crnn_ema.train() 
+        crnn_ema.train()
         crnn, crnn_ema = to_cuda_if_available(crnn, crnn_ema)
 
         loss_value = train(training_loader, crnn, optim, epoch,
                            ema_model=crnn_ema, mask_weak=weak_mask, mask_strong=strong_mask, adjust_lr=cfg.adjust_lr)
 
         # Validation
-        crnn = crnn.eval()
+        crnn.eval()
         logger.info("\n ### Valid synthetic metric ### \n")
         predictions = get_predictions(crnn, valid_synth_loader, many_hot_encoder.decode_strong, pooling_time_ratio,
                                       median_window=median_window, save_predictions=None)
-        # Validation with synthetic data (dropping feature_filename for psds)
         valid_synth = dfs["valid_synthetic"].drop("feature_filename", axis=1)
         valid_synth_f1, psds_m_f1 = compute_metrics(predictions, valid_synth, durations_synth)
 
@@ -417,56 +422,53 @@ if __name__ == '__main__':
 
         if cfg.save_best:
             if save_best_cb.apply(valid_synth_f1):
-                model_fname = os.path.join(saved_model_dir, "baseline_best")
-                torch.save(state, model_fname)
+                best_model = copy.deepcopy(crnn)  # Save the best model in memory
+                best_valid_synth_f1 = valid_synth_f1
             results.loc[epoch, "global_valid"] = valid_synth_f1
+
         results.loc[epoch, "loss"] = loss_value.item()
         results.loc[epoch, "valid_synth_f1"] = valid_synth_f1
 
         if cfg.early_stopping:
             if early_stopping_call.apply(valid_synth_f1):
-                logger.warn("EARLY STOPPING")
+                logger.warning("EARLY STOPPING")
                 break
 
-    if cfg.save_best:
-        model_fname = os.path.join(saved_model_dir, "baseline_best")
-        state = torch.load(model_fname)
-        crnn = _load_crnn(state)
-        logger.info(f"testing model: {model_fname}, epoch: {state['epoch']}")
+    if cfg.save_best and best_model is not None:
+        # Use the best model saved in memory
+        crnn = best_model
+        logger.info(f"testing model of best epoch, valid_synth_f1: {best_valid_synth_f1}")
     else:
         logger.info("testing model of last epoch: {}".format(cfg.n_epoch))
+
     results_df = pd.DataFrame(results).to_csv(os.path.join(saved_pred_dir, "results.tsv"),
                                               sep="\t", index=False, float_format="%.4f")
-    # ##############
+
     # Validation
-    # ##############
     crnn.eval()
     transforms_valid = get_transforms(cfg.max_frames, scaler, add_axis_conv)
-    predicitons_fname = os.path.join(saved_pred_dir, "baseline_validation.tsv")
+    predictions_fname = os.path.join(saved_pred_dir, "baseline_validation.tsv")
 
     validation_data = DataLoadDf(dfs["validation"], encod_func, transform=transforms_valid, return_indexes=True)
     validation_dataloader = DataLoader(validation_data, batch_size=cfg.batch_size, shuffle=False, drop_last=False,
                                        num_workers=cfg.num_workers)
     validation_labels_df = dfs["validation"].drop("feature_filename", axis=1)
     durations_validation = get_durations_df(cfg.validation, cfg.audio_validation_dir)
+
     # Preds with only one value
     valid_predictions = get_predictions(crnn, validation_dataloader, many_hot_encoder.decode_strong,
                                         pooling_time_ratio, median_window=median_window,
-                                        save_predictions=predicitons_fname)
-    valid_synth_f1, psds_m_f1=compute_metrics(valid_predictions, validation_labels_df, durations_validation)
+                                        save_predictions=predictions_fname)
+    valid_synth_f1, psds_m_f1 = compute_metrics(valid_predictions, validation_labels_df, durations_validation)
 
-    # ##########
-    # Optional but recommended
-    # ##########
-    # Compute psds scores with multiple thresholds (more accurate). n_thresholds could be increased.
+    # Optional but recommended: Compute PSDS scores with multiple thresholds (more accurate).
     n_thresholds = 50
-    # Example of 5 thresholds: 0.1, 0.3, 0.5, 0.7, 0.9
     list_thresholds = np.arange(1 / (n_thresholds * 2), 1, 1 / n_thresholds)
     pred_ss_thresh = get_predictions(crnn, validation_dataloader, many_hot_encoder.decode_strong,
                                      pooling_time_ratio, thresholds=list_thresholds, median_window=median_window,
-                                     save_predictions=predicitons_fname)
+                                     save_predictions=predictions_fname)
     psds = compute_psds_from_operating_points(pred_ss_thresh, validation_labels_df, durations_validation)
-    
+
     #os.environ['PYTORCH_CUDA_ALLOC_CONF'] = ''
 
     load_dotenv()
