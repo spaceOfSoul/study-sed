@@ -284,41 +284,46 @@ if __name__ == '__main__':
     # ##############
     # DATA
     # ##############
+    # DESED class is set default feature directory and init.
+    # get_dfs : bring dataframe
     dataset = DESED(base_feature_dir=os.path.join(cfg.workspace, "dataset", "features"),
                     compute_log=False)
     dfs = get_dfs(dataset, reduced_number_of_data)
 
     # Meta path for psds
-    durations_synth = get_durations_df(cfg.synthetic)
-    many_hot_encoder = ManyHotEncoder(cfg.classes, n_frames=cfg.max_frames // pooling_time_ratio)
-    encod_func = many_hot_encoder.encode_strong_df
+    durations_synth = get_durations_df(cfg.synthetic) # 합성 데이터의 지속 시간 정보
+    many_hot_encoder = ManyHotEncoder(cfg.classes, n_frames=cfg.max_frames // pooling_time_ratio) # 클래스 라벨을 Many-Hot 인코딩 방식으로 인코딩
+    encod_func = many_hot_encoder.encode_strong_df # strong label data 2 many-Hot
 
     # Normalisation per audio or on the full dataset
-    if cfg.scaler_type == "dataset":
+    if cfg.scaler_type == "dataset": # 여러 데이터셋에 대해 동일한 변환을 적용하고, 스케일러를 데이터셋 전체에 대해 계산
         transforms = get_transforms(cfg.max_frames, add_axis=add_axis_conv)
         weak_data = DataLoadDf(dfs["weak"], encod_func, transforms)
         unlabel_data = DataLoadDf(dfs["unlabel"], encod_func, transforms)
         train_synth_data = DataLoadDf(dfs["train_synthetic"], encod_func, transforms)
         scaler_args = []
         scaler = Scaler()
-        # # Only on real data since that's our final goal and test data are real
+        # Only on real data since that's our final goal and test data are real
         scaler.calculate_scaler(ConcatDataset([weak_data, unlabel_data, train_synth_data]))
         logger.debug(f"scaler mean: {scaler.mean_}")
-    else:
+    else: # normalization each audio file
         scaler_args = ["global", "min-max"]
         scaler = ScalerPerAudio(*scaler_args)
 
+    # transform pipeline generate
     transforms = get_transforms(cfg.max_frames, scaler, add_axis_conv,
                                 noise_dict_params={"mean": 0., "snr": cfg.noise_snr})
     transforms_valid = get_transforms(cfg.max_frames, scaler, add_axis_conv)
 
-    weak_data = DataLoadDf(dfs["weak"], encod_func, transforms, in_memory=cfg.in_memory)
+    # dfs
+    weak_data = DataLoadDf(dfs["weak"], encod_func, transforms, in_memory=cfg.in_memory) # 이때 in_memnory는 메모리에 올릴지 여부
     unlabel_data = DataLoadDf(dfs["unlabel"], encod_func, transforms, in_memory=cfg.in_memory_unlab)
     train_synth_data = DataLoadDf(dfs["train_synthetic"], encod_func, transforms, in_memory=cfg.in_memory)
     valid_synth_data = DataLoadDf(dfs["valid_synthetic"], encod_func, transforms_valid,
                                   return_indexes=True, in_memory=cfg.in_memory)
     logger.debug(f"len synth: {len(train_synth_data)}, len_unlab: {len(unlabel_data)}, len weak: {len(weak_data)}")
 
+    # dataset combine and batch sampling
     if not no_synthetic:
         list_dataset = [weak_data, unlabel_data, train_synth_data]
         batch_sizes = [cfg.batch_size//4, cfg.batch_size//2, cfg.batch_size//4]
@@ -329,8 +334,8 @@ if __name__ == '__main__':
         strong_mask = None
     weak_mask = slice(batch_sizes[0])  # Assume weak data is always the first one
 
-    concat_dataset = ConcatDataset(list_dataset)
-    sampler = MultiStreamBatchSampler(concat_dataset, batch_sizes=batch_sizes)
+    concat_dataset = ConcatDataset(list_dataset) # data concat(combine)
+    sampler = MultiStreamBatchSampler(concat_dataset, batch_sizes=batch_sizes) # 결합된 데이터셋에서 여러 스트림(batch)을 샘플링하는 배치 샘플러
     training_loader = DataLoader(concat_dataset, batch_sampler=sampler, num_workers=cfg.num_workers)
     valid_synth_loader = DataLoader(valid_synth_data, batch_size=cfg.batch_size, num_workers=cfg.num_workers)
 

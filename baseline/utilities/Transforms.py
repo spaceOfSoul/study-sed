@@ -282,27 +282,33 @@ class Compose(object):
 
         return format_string
 
-
+# data transform pipeline setting
 def get_transforms(frames=None, scaler=None, add_axis=0, noise_dict_params=None, combine_channels_args=None):
     transf = []
     unsqueeze_axis = None
     if add_axis is not None:
         unsqueeze_axis = add_axis
 
+    # channel combine
     if combine_channels_args is not None:
         transf.append(CombineChannels(*combine_channels_args))
 
+    # gausian noise
     if noise_dict_params is not None:
         transf.append(AugmentGaussianNoise(**noise_dict_params))
 
+    # log transform
     transf.append(ApplyLog())
 
+    # padding
     if frames is not None:
         transf.append(PadOrTrunc(nb_frames=frames))
 
     transf.append(ToTensor(unsqueeze_axis=unsqueeze_axis))
 
+    # Normalize
     if scaler is not None:
         transf.append(Normalize(scaler=scaler))
 
+    # end tranform transform
     return Compose(transf)

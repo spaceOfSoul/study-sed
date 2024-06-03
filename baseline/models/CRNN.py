@@ -11,7 +11,7 @@ import torch
 from models.RNN import BidirectionalGRU, BidirectionalLSTM, BidirectionalRNN
 from models.CNN import CNN, SkipCNN
 from models.RESNET import ResNet
-from models.EfficientNet import EfficientNet, EfficientNetWrapper
+from models.EfficientNet import EfficientNet
 
 class CRNN(nn.Module):
 
@@ -103,7 +103,7 @@ class CRNN(nn.Module):
             bs_in, nc_in = x.size(0), x.size(1)
             x = x.view(bs_in * nc_in, 1, *x.shape[2:])
 
-        #print(f"before cnn : {x.shape}")
+        #print(f"before cnn : {x.shape}")5396282
         # conv features
         x = self.cnn(x)
         #print(f"after cnn : {x.shape}")

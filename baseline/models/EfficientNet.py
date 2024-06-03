@@ -3,6 +3,7 @@ import torch
 import torch.nn as nn
 import torch.nn.functional as F
 from torch.nn.parameter import Parameter
+from models.DYConv import DynamicConv2d
 
 # sigmoid
 class Swish(nn.Module):
@@ -45,22 +46,22 @@ class Bottleneck(nn.Module):
         if expand == 1:
             #self.conv2 = nn.Conv2d(inplanes*expand, inplanes*expand, kernel_size=kernel_size, stride=stride,
             #                       padding=kernel_size//2, groups=inplanes*expand, bias=False)
-            self.conv2 = nn.Conv2d(inplanes*expand, inplanes*expand, kernel_size=kernel_size, stride=stride,
+            self.conv2 = DynamicConv2d(inplanes*expand, inplanes*expand, kernel_size=kernel_size, stride=stride,
                                    padding="same", groups=inplanes*expand, bias=False)
             self.bn2 = nn.BatchNorm2d(inplanes*expand, momentum=0.99, eps=1e-3)
             self.se = SqeezeExcitation(inplanes*expand, se_ratio)
-            self.conv3 = nn.Conv2d(inplanes*expand, planes, kernel_size=1, bias=False)
+            self.conv3 = DynamicConv2d(inplanes*expand, planes, kernel_size=1, bias=False)
             self.bn3 = nn.BatchNorm2d(planes, momentum=0.99, eps=1e-3)
         else:
-            self.conv1 = nn.Conv2d(inplanes, inplanes*expand, kernel_size=1, bias=False)
+            self.conv1 = DynamicConv2d(inplanes, inplanes*expand, kernel_size=1, bias=False)
             self.bn1 = nn.BatchNorm2d(inplanes*expand, momentum=0.99, eps=1e-3)
             #self.conv2 = nn.Conv2d(inplanes*expand, inplanes*expand, kernel_size=kernel_size, stride=stride,
             #                       padding=kernel_size//2, groups=inplanes*expand, bias=False) # group is inplanes*expand, it is convolution independent for channel
-            self.conv2 = nn.Conv2d(inplanes*expand, inplanes*expand, kernel_size=kernel_size, stride=stride,
+            self.conv2 = DynamicConv2d(inplanes*expand, inplanes*expand, kernel_size=kernel_size, stride=stride,
                                    padding="same", groups=inplanes*expand, bias=False) # group is inplanes*expand, it is convolution independent for channel
             self.bn2 = nn.BatchNorm2d(inplanes*expand, momentum=0.99, eps=1e-3)
             self.se = SqeezeExcitation(inplanes*expand, se_ratio) # adjust channel weight
-            self.conv3 = nn.Conv2d(inplanes*expand, planes, kernel_size=1, bias=False) # and combine after depthwise separable convolution
+            self.conv3 = DynamicConv2d(inplanes*expand, planes, kernel_size=1, bias=False) # and combine after depthwise separable convolution
             self.bn3 = nn.BatchNorm2d(planes, momentum=0.99, eps=1e-3)
 
         self.swish = Swish()
@@ -146,14 +147,20 @@ class EfficientNet(nn.Module):
         #strides = [1, 2, 2, 2, 1, 2, 1]
         #kernel_sizes = [3, 3, 5, 3, 5, 5, 3]
         channels = [1,16,32,64,128,128,128,128,128]
-        expands = [1, 6, 6, 6, 6, 6, 6]
-        repeats = [1, 2, 2, 3, 3, 4, 1]
+        expands = [2, 2, 2,1,1,1,1]
+        repeats = [2, 2, 2, 1, 1, 1, 1]
         strides = [1, 1, 1, 1, 1, 1, 1]
         kernel_sizes = [3, 3, 3, 3, 3, 3, 3]
         pkernel_sizes = [[2, 2], [2, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2]]
         depth = depth_coef
         width = width_coef
 
+        print(channels)
+        print(expands)
+        print(repeats)
+        print(strides)
+        print(kernel_sizes)
+        print(pkernel_sizes)
 
         channels = [round(x*width) for x in channels] # [int(x*width) for x in channels]
         repeats = [round(x*depth) for x in repeats] # [int(x*width) for x in repeats]
@@ -246,109 +253,6 @@ class EfficientNet(nn.Module):
         logit = self.stage9(x)
 
         return logit
-
-#class EfficientNet(nn.Module):
-    #def __init__(self, width_coef=1., depth_coef=1., scale=1.,
-    #             dropout_ratio=0.5, se_ratio=0.25, stochastic_depth=False, pl=0.5):
-    #    super(EfficientNet, self).__init__()
-
-    #    channels = [64,128,128,128,256,256,256,128,128]
-    #    expands = [1, 1, 1, 1, 1, 1, 1]
-    #    repeats = [1, 1, 1, 1, 1, 1, 1]
-    #    strides = [1, 1, 1, 1, 1, 1, 1]
-    #    kernel_sizes = [3, 3, 3, 3, 3, 3, 3]
-    #    depth = depth_coef
-    #    width = width_coef
-
-    #    channels = [round(x * width) for x in channels]
-    #    repeats = [round(x * depth) for x in repeats]
-    #    sum_layer = sum(repeats)
-
-    #    self.upsample = Upsample(scale)
-    #    self.swish = Swish()
-
-    #    layers = []
-    #    layers.append(nn.Sequential(
-    #        nn.Conv2d(1, channels[0], kernel_size=3, stride=2, padding=1, bias=False),
-    #        nn.BatchNorm2d(channels[0], momentum=0.99, eps=1e-3)
-    #    ))
-
-    #    for i in range(7):
-    #        if stochastic_depth:
-    #            layers.append(MBConv(
-    #                inplanes=channels[i],
-    #                planes=channels[i+1],
-    #                repeat=repeats[i],
-    #                kernel_size=kernel_sizes[i],
-    #                stride=strides[i],
-    #                expand=expands[i],
-    #                se_ratio=se_ratio,
-    #                sum_layer=sum_layer,
-    #                count_layer=sum(repeats[:i]),
-    #                pl=pl
-    #            ))
-    #        else:
-    #            layers.append(MBConv(
-    #                inplanes=channels[i],
-    #                planes=channels[i+1],
-    #                repeat=repeats[i],
-    #                kernel_size=kernel_sizes[i],
-    #                stride=strides[i],
-    #                expand=expands[i],
-    #                se_ratio=se_ratio,
-    #                sum_layer=sum_layer,
-    #                count_layer=sum(repeats[:i]),
-    #                pl=pl
-    #            ))
-
-    #    layers.append(nn.Sequential(
-    #        nn.Conv2d(channels[6], channels[7], kernel_size=1, bias=False),
-    #        nn.BatchNorm2d(channels[7], momentum=0.99, eps=1e-3),
-    #        Swish(),
-    #        nn.AdaptiveAvgPool2d((157, 1)),
-    #        nn.Dropout(p=dropout_ratio)
-    #    ))
-
-    #    self.cnn = nn.Sequential(*layers)
-
-    #    for m in self.modules():
-    #        if isinstance(m, nn.Conv2d):
-    #            nn.init.kaiming_normal_(m.weight, mode='fan_out', nonlinearity='relu')
-    #        elif isinstance(m, (nn.BatchNorm2d, nn.GroupNorm)):
-    #            nn.init.constant_(m.weight, 1)
-    #            nn.init.constant_(m.bias, 0)
-
-    #def load_state_dict(self, state_dict, strict=True):
-    #    self.cnn.load_state_dict(state_dict)
-
-    #def state_dict(self, destination=None, prefix='', keep_vars=False):
-    #    return self.cnn.state_dict(destination=destination, prefix=prefix, keep_vars=keep_vars)
-
-    #def save(self, filename):
-    #    torch.save(self.cnn.state_dict(), filename)
-
-    #def forward(self, x):
-    #    x = self.upsample(x)
-    #    x = self.cnn(x)
-    #    return x
-
-class EfficientNetWrapper(nn.Module):
-    def __init__(self, efficient_net):
-        super(EfficientNetWrapper, self).__init__()
-        self.efficient_net = efficient_net
-
-    def forward(self, x):
-        return self.efficient_net(x)
-
-    def load_state_dict(self, state_dict, strict=True):
-        self.efficient_net.load_state_dict(state_dict)
-
-    def state_dict(self, destination=None, prefix='', keep_vars=False):
-        return self.efficient_net.state_dict(destination=destination, prefix=prefix, keep_vars=keep_vars)
-
-    def save(self, filename):
-        torch.save(self.efficient_net.state_dict(), filename)
-
 
 if __name__ == "__main__":
     model = EfficientNet()

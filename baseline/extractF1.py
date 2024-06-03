@@ -18,12 +18,13 @@ def process_log_file(file_path):
 if __name__ == "__main__":
     import os
 
-    log_directory = "logs"
+    log_directory = "baseline/logs"
     
     all_f1_scores = []
 
     for filename in os.listdir(log_directory):
-        if filename.endswith(".log"):
+        #if filename.endswith(".log"):
+        if filename == "test_14.log":
             file_path = os.path.join(log_directory, filename)
             f1_scores = process_log_file(file_path)
             all_f1_scores.extend(f1_scores)
