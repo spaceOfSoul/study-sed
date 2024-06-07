@@ -107,7 +107,7 @@ def train(train_loader, model, optimizer, c_epoch, ema_model=None, mask_weak=Non
         # plt_(batch_input,target,ema_batch_input,target)
         
         #rolling,target_s = ema_input_target(40, batch_input, target)
-        ema_batch_input, target = ema_input_target(40, batch_input, target)
+        ema_batch_input, target = ema_input_target(batch_input, 40, target)
         # print()
         #plt_(batch_input,target,rolling,target_s)
 
@@ -136,8 +136,8 @@ def train(train_loader, model, optimizer, c_epoch, ema_model=None, mask_weak=Non
         
         # ema_batch_input = ema_batch_input[0].unsqueeze(dim=1)
 
-        print(batch_input.shape)
-        print(ema_batch_input.shape)
+        #print(batch_input.shape)
+        #print(ema_batch_input.shape)
 
         ema_batch_input = torch.cat([batch_input,ema_batch_input],dim=0)
         target_cat = torch.cat([target,target],dim=0)

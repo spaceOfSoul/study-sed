@@ -141,14 +141,9 @@ class EfficientNet(nn.Module):
                  dropout_ratio=0.5, se_ratio=0.25, stochastic_depth=False, pl=0.5):
 
         super(EfficientNet, self).__init__()
-        #channels = [64,128,128,128,256,256,256,128,128]
-        #expands = [1, 6, 6, 6, 6, 6, 6]
-        #repeats = [1, 2, 2, 3, 3, 4, 1]
-        #strides = [1, 2, 2, 2, 1, 2, 1]
-        #kernel_sizes = [3, 3, 5, 3, 5, 5, 3]
         channels = [1,16,32,64,128,128,128,128,128]
-        expands = [2, 2, 2,1,1,1,1]
-        repeats = [2, 2, 2, 1, 1, 1, 1]
+        expands = [1, 1, 1,1,1,1,1]
+        repeats = [2, 2, 2, 2, 3, 4, 1]
         strides = [1, 1, 1, 1, 1, 1, 1]
         kernel_sizes = [3, 3, 3, 3, 3, 3, 3]
         pkernel_sizes = [[2, 2], [2, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2]]

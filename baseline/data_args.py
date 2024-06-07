@@ -1,4 +1,5 @@
 #Some codes are adopted from https://github.com/DCASE-REPO/DESED_task
+# from jiwon
 import torch
 import numpy as np
 import random
@@ -306,18 +307,37 @@ def time_mask_ex_target(features, net_pooling=None, mask_ratios=(10, 50)):
     return features
 
 
-def ema_input_target(Nsample, target, batch_input = None):
-    if batch_input is not None:
-        ema_batch_input = torch.roll(batch_input, 4*Nsample, 2)
-    else:
-        ema_batch_input = None
+# it is not work my assume
+# maybe target rolling
+#def ema_input_target(Nsample, target, batch_input = None): 
+#    if batch_input is not None:
+#        ema_batch_input = torch.roll(batch_input, 4*Nsample, 2)
+#    else:
+#        ema_batch_input = None
 
-    target_s = target.clone()
-    temp = target_s[18:24:].clone()
-    temp = torch.roll(temp, Nsample, 1)
-    target_s[18:24:] = temp
+#    target_s = target.clone()
+#    temp = target_s[18:24:].clone()
+#    temp = torch.roll(temp, Nsample, 1)
+#    target_s[18:24:] = temp
+    
+#    return ema_batch_input, target_s
+
+# it is rolling for batch_input. not target (maybe)
+def ema_input_target(batch_input, Nsample, target=None):
+    ema_batch_input = torch.roll(batch_input, 4*Nsample, 2)
+    if target is not None:
+        target_s = target.clone()
+        temp = target_s[18:24:].clone()
+        temp = torch.roll(temp, Nsample, 1)
+        target_s[18:24:] = temp
+        # print(torch.torch.is_leaf(target_s.storage()))
+        # target_s[18:24:] = torch.roll(target_s[18:24:], int(Nsample/4), 1)
+        # target_s[18:24:] = target_s[18:24:].roll(int(Nsample/4), 1)
+    else:
+        target_s = None
     
     return ema_batch_input, target_s
+
 
 def mix_up(batch_input, Nsample, target=None):
     ema_batch_input = batch_input.clone()
