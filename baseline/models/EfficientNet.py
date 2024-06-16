@@ -138,12 +138,12 @@ class Flatten(nn.Module):
     
 class EfficientNet(nn.Module):
     def __init__(self,width_coef=1., depth_coef=1., scale=1.,
-                 dropout_ratio=0.5, se_ratio=0.25, stochastic_depth=False, pl=0.5):
+                 dropout_ratio=0.5, se_ratio=0.25, channels=[], expands=[], stochastic_depth=False, pl=0.5):
 
         super(EfficientNet, self).__init__()
         channels = [1,16,32,64,128,128,128,128,128]
-        expands = [1, 1, 1,1,1,1,1]
-        repeats = [2, 2, 2, 2, 3, 4, 1]
+        expands = [2, 2, 1, 1,1,1,1]
+        repeats = [2, 2, 2, 4, 5, 6, 8]
         strides = [1, 1, 1, 1, 1, 1, 1]
         kernel_sizes = [3, 3, 3, 3, 3, 3, 3]
         pkernel_sizes = [[2, 2], [2, 2], [1, 2], [1, 2], [1, 2], [1, 2], [1, 2]]

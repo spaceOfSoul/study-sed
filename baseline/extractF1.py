@@ -24,7 +24,7 @@ if __name__ == "__main__":
 
     for filename in os.listdir(log_directory):
         #if filename.endswith(".log"):
-        if filename == "test_14.log":
+        if filename == "dyconv_effi_arg_test35.log":
             file_path = os.path.join(log_directory, filename)
             f1_scores = process_log_file(file_path)
             all_f1_scores.extend(f1_scores)

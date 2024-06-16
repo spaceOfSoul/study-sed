@@ -1,6 +1,8 @@
 import torch.nn as nn
 import torch
 from torchvision import models
+from models.DYConv import DynamicConv2d
+
 
 class GLU(nn.Module):
     def __init__(self, input_num):
@@ -34,7 +36,7 @@ class CNN(nn.Module):
 
     def __init__(self, n_in_channel, activation="Relu", conv_dropout=0,
                  kernel_size=[3, 3, 3], padding=[1, 1, 1], stride=[1, 1, 1], nb_filters=[64, 64, 64],
-                 pooling=[(1, 4), (1, 4), (1, 4)], poolingFunc = "avg", skip_connection = True
+                 pooling=[(1, 4), (1, 4), (1, 4)], poolingFunc = "avg", skip_connection = True, conv2d_type = DynamicConv2d
                  ):
         super(CNN, self).__init__()
         self.nb_filters = nb_filters
@@ -43,7 +45,7 @@ class CNN(nn.Module):
             nIn = n_in_channel if i == 0 else nb_filters[i - 1]
             nOut = nb_filters[i]
             cnn.add_module('conv{0}'.format(i),
-                           nn.Conv2d(nIn, nOut, kernel_size[i], stride[i], padding[i]))
+                           conv2d_type(nIn, nOut, kernel_size[i], stride[i], padding[i]))
             if batchNormalization:
                 cnn.add_module('batchnorm{0}'.format(i), nn.BatchNorm2d(nOut, eps=0.001, momentum=0.99))
             if activ.lower() == "leakyrelu":

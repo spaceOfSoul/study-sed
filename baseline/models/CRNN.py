@@ -71,8 +71,10 @@ class CRNN(nn.Module):
         self.dense = nn.Linear(n_RNN_cell*2, nclass)
         self.sigmoid = nn.Sigmoid()
         if self.attention:
+            print('apply attention')
             self.dense_softmax = nn.Linear(n_RNN_cell*2, nclass)
-            self.softmax = nn.Softmax(dim=-1)
+            self.softmax = nn.Softmax(dim=-1) # softmax on class dimension
+            # if apply softmax on time dimention, dim = 1
 
     def load_cnn(self, state_dict):
         self.cnn.load_state_dict(state_dict)
@@ -81,7 +83,7 @@ class CRNN(nn.Module):
                 param.requires_grad = False
 
     def load_state_dict(self, state_dict, strict=True):
-        self.cnn.load_state_dict(state_dict["cnn"], strict=strict)
+        self.cnn.load_state_dict(state_dict["cnn"], stridyconv_effi_test16ct=strict)
         self.rnn.load_state_dict(state_dict["rnn"], strict=strict)
         self.dense.load_state_dict(state_dict["dense"], strict=strict)
 
@@ -103,7 +105,7 @@ class CRNN(nn.Module):
             bs_in, nc_in = x.size(0), x.size(1)
             x = x.view(bs_in * nc_in, 1, *x.shape[2:])
 
-        #print(f"before cnn : {x.shape}")5396282
+        #print(f"before cnn : {x.shape}")
         # conv features
         x = self.cnn(x)
         #print(f"after cnn : {x.shape}")
@@ -125,6 +127,8 @@ class CRNN(nn.Module):
         # rnn features
         x = self.rnn(x)
         x = self.dropout(x)
+
+        # classifier
         strong = self.dense(x)  # [bs, frames, nclass]
         strong = self.sigmoid(strong)
         if self.attention:

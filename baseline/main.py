@@ -28,6 +28,7 @@ from utilities.utils import SaveBest, to_cuda_if_available, weights_init, Averag
     get_durations_df
 from utilities.ManyHotEncoder import ManyHotEncoder
 from utilities.Transforms import get_transforms
+from utilities.data_aug import *
 
 from utilities.discord_Notifier import DiscordNotifier
 import os
@@ -86,6 +87,19 @@ def train(train_loader, model, optimizer, c_epoch, ema_model=None, mask_weak=Non
     meters = AverageMeterSet()
     log.debug("Nb batches: {}".format(len(train_loader)))
     start = time.time()
+
+    # transform for argumentation
+    _transform = {
+        "n_transform": 2,                     # 0: no augmentation below is applied. 1: same augmentation below is applied on student/teacher model input. 2: different augmentations below is applied on student/teacher model input.
+        "choice": [1, 0, 0],                  # apply the chosen data augmentations: [ FilterAugment, freq_mask, add_noise ]
+        "filter_db_range": [-4.5, 6],         # db range of FilterAugment to be applied on each band
+        "filter_bands": [2, 5],               # range of frequency band number in FilterAugment
+        "filter_minimum_bandwidth": 4,
+        "filter_type": "step",
+        "freq_mask_ratio": 16,                # maximum ratio of frequency masking range. max 1/16 of total frequency number will be masked
+        "noise_snrs": [35, 40]                # snr of original signal wrpt the noise added.
+    }
+    
     for i, ((batch_input, ema_batch_input), target) in enumerate(train_loader):
         global_step = c_epoch * len(train_loader) + i
         rampup_value = ramps.exp_rampup(global_step, cfg.n_epoch_rampup*len(train_loader))
@@ -94,6 +108,26 @@ def train(train_loader, model, optimizer, c_epoch, ema_model=None, mask_weak=Non
             adjust_learning_rate(optimizer, rampup_value)
         meters.update('lr', optimizer.param_groups[0]['lr'])
         batch_input, ema_batch_input, target = to_cuda_if_available(batch_input, ema_batch_input, target)
+
+        # data argumentation
+        # shift
+        #print('batch_input : ', batch_input.shape)
+        #print('batch_input : ', target.shape[mask_strong])
+        batch_input, target = frame_shift(batch_input, target, 4)
+        
+        #mix up
+        if 0.2 > torch.rand(1).item():
+            batch_input[mask_weak], target_weak = mixup(batch_input[mask_weak], target.max(-2)[0][mask_weak], mixup_label_type='soft')
+            batch_input[mask_strong], target[mask_strong] = mixup(batch_input[mask_strong], target[mask_strong], mixup_label_type='soft')
+        
+        # time masking
+        batch_input[mask_strong], target[mask_strong] = time_mask(batch_input[mask_strong], target[mask_strong], 4, mask_ratios=[ 5, 20 ])
+        
+        batch_input, ema_batch_input = feature_transformation(batch_input, **_transform), feature_transformation(ema_batch_input, **_transform)
+
+        batch_input = batch_input[0]
+        ema_batch_input = ema_batch_input[0]
+
         # Outputs
         strong_pred_ema, weak_pred_ema = ema_model(ema_batch_input)
         strong_pred_ema = strong_pred_ema.detach()

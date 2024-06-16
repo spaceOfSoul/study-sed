@@ -6,9 +6,10 @@ baseline_data = {
     "F1-score": [25.1, 35.0, 40.8, 28.3, 27.7, 40.7, 24.9, 34.1, 50.1, 43.0]
 }
 
+# dyconv_effi_test35_with_synthetic
 model_c_data = {
     "Class": ["Alarm bell", "Blender", "Cat", "Dishes", "Dog", "Electric shaver", "Frying", "Running water", "Speech", "Vacuum cleaner"],
-    "F1-score": [16.8, 31.5, 48.0, 29.7, 24.8, 49.0, 34.2, 37.7, 50.8, 48.0]
+    "F1-score": [27.0, 41.1, 44.9, 30.3, 23.4, 41.3, 41.1, 38.7, 55.5, 44.4]
 }
 
 
